@@ -305,7 +305,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
         </div>
-        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta e il pagamento online la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
+        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
       </div>
       <div class="cardstage">
         <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
@@ -343,7 +343,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Quanto costa</h2></div>
-        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si effettua online al momento della richiesta.</p>
+        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Puoi pagare online al momento della richiesta oppure in contanti quando ritiri la tessera e la felpa.</p>
       </div>
       <div class="prices">
         <div class="price">
@@ -364,12 +364,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Tre passaggi</h2></div>
-        <p>Richiedi la tua EXMA Card online, pagala con Stripe e ritirala in EXMA (Via San Lucifero 71, Cagliari).</p>
+        <p>Richiedi la tua EXMA Card online, scegli se pagare subito con Stripe o in contanti al ritiro, e ritirala in EXMA (Via San Lucifero 71, Cagliari).</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="n">01</div><h3>Compila il modulo e paga online</h3><p>Inserisci i tuoi dati e completa il pagamento. Bastano pochi minuti.</p></div>
-        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando la tua tessera è pronta per il ritiro.</p></div>
-        <div class="step"><div class="n">03</div><h3>Ritirala in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità. Insieme alla tessera ricevi la tua felpa.</p></div>
+        <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati e scegli come pagare: online o in contanti al ritiro. Bastano pochi minuti.</p></div>
+        <div class="step"><div class="n">02</div><h3>Ricevi la mail</h3><p>Quando la tessera e la felpa sono pronte per il ritiro, ti mandiamo una mail.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritirala in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità. Se hai scelto il contante, paghi qui. Insieme alla tessera ricevi la tua felpa.</p></div>
       </div>
     </div>
   </section>
@@ -419,12 +419,13 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap formgrid">
       <div class="formside">
         <h2>Richiedi la tua tessera</h2>
-        <p>Compila il modulo. Quando la tessera è pronta ricevi un'email con le indicazioni per il ritiro.</p>
+        <p>Compila il modulo. Quando la tessera e la felpa sono pronte per il ritiro, ti mandiamo una mail.</p>
         <div class="box">
           <h3>Ritiro in sede</h3>
           <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
           <p>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
           <p>Porta un documento d'identità valido.</p>
+          <p>Se scegli di pagare in contanti, paghi al ritiro.</p>
           <p>La tessera è intestata a te e la ritiri solo tu.</p>
           <p style="color:var(--gray-600)">La tessera non viene spedita e non ha una versione digitale.</p>
         </div>
@@ -442,6 +443,11 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
           <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 € · Over 35</span></label>
         </fieldset>
+        <fieldset class="radios">
+          <legend>Come vuoi pagare</legend>
+          <label class="radio"><input type="radio" name="pagamento" id="p-online" value="online" checked><span>Online, subito</span></label>
+          <label class="radio"><input type="radio" name="pagamento" id="p-contanti" value="contanti"><span>In contanti al ritiro</span></label>
+        </fieldset>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
           <!-- TODO: URL reale prima della pubblicazione -->
@@ -456,7 +462,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
         <p class="reqnote">Tutti i campi sono obbligatori.</p>
         <div class="submitrow">
-          <button class="btn accent" type="submit">Invia richiesta e paga</button>
+          <button class="btn accent" id="submitbtn" type="submit">Invia richiesta e paga</button>
         </div>
       </form>
     </div>
@@ -540,6 +546,10 @@ document.getElementById("terminilink").href = TERMINI_URL;
 
 /* Modulo: controlli e conferma (prototipo, nessun invio reale) */
 const form = document.getElementById("cardform");
+const submitBtn = document.getElementById("submitbtn");
+form.querySelectorAll('input[name="pagamento"]').forEach(r => r.addEventListener("change", () => {
+  submitBtn.textContent = document.getElementById("p-contanti").checked ? "Invia richiesta" : "Invia richiesta e paga";
+}));
 function setErr(input, msg) {
   const f = input.closest(".field");
   if (f) { f.classList.toggle("invalid", !!msg); f.querySelector(".err").textContent = msg || ""; }
@@ -572,16 +582,17 @@ form.addEventListener("submit", e => {
   const nome = document.getElementById("nome").value.trim();
   const email = document.getElementById("email").value.trim();
   const ridotta = document.getElementById("t-ridotta").checked;
+  const contanti = document.getElementById("p-contanti").checked;
   const link = STRIPE_LINK[ridotta ? "ridotta" : "intera"];
-  if (/^https:\/\//.test(link)) { window.location.href = link; return; }
+  if (!contanti && /^https:\/\//.test(link)) { window.location.href = link; return; }
 
   /* Link Stripe non ancora configurato: mostra la conferma di prova */
   form.innerHTML = "";
   const d = document.createElement("div");
   d.className = "done";
-  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera è pronta la ritiri in EXMA, Via San Lucifero 71, 09127 Cagliari, con un documento d'identità.</p><p style='color:var(--gray-500);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati e il pagamento Stripe non è ancora collegato.</p>";
+  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera e la felpa sono pronte, ti mandiamo una mail. Le ritiri in EXMA, Via San Lucifero 71, 09127 Cagliari, con un documento d'identità.</p><p style='color:var(--gray-500);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati e il pagamento Stripe non è ancora collegato.</p>";
   const tariffa = ridotta ? "ridotta (50 €)" : "intera (100 €)";
-  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card sarà pronta. Tariffa scelta: " + tariffa + ".";
+  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card e la felpa saranno pronte. Tariffa scelta: " + tariffa + (contanti ? ", da pagare in contanti al ritiro." : ".");
   form.appendChild(d);
 });
 </script>
