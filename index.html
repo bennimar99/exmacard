@@ -122,7 +122,7 @@ section.block .wrap { padding-block: 88px; }
 .prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
-.price .amount { color: var(--blue-x); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
+.price .amount { color: var(--blue); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gray-500); margin-left: 10px; }
 .price p { margin: 0; color: var(--gray-600); max-width: 30em; }
 
@@ -130,7 +130,7 @@ section.block .wrap { padding-block: 88px; }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); }
 .step { padding: 32px 28px 12px; min-width: 0; text-align: center; }
 .step + .step { border-left: 1px solid var(--ink); }
-.step .n { font-family: var(--font-display); font-size: clamp(64px, 8vw, 112px); font-weight: 500; line-height: 1; letter-spacing: -0.02em; color: var(--blue-x); }
+.step .n { font-family: var(--font-display); font-size: 72px; font-weight: 500; line-height: 1; letter-spacing: -0.02em; color: var(--blue); }
 .step h3 { font-size: 28px; margin: 18px 0 12px; letter-spacing: -0.02em; }
 .step p { margin: 0; color: var(--gray-600); }
 
@@ -142,6 +142,11 @@ section.block .wrap { padding-block: 88px; }
 .core .item .big { font-weight: 500; font-size: 64px; line-height: .9; letter-spacing: -0.02em; color: var(--blue); }
 .core .item h3 { font-size: 28px; letter-spacing: -0.02em; }
 .core .item p { margin: 0; color: var(--gray-600); }
+.dark { background: var(--ink); color: var(--paper); }
+.dark .core { border-color: rgba(255,255,255,.35); margin-bottom: 0; }
+.dark .core .item + .item { border-left-color: rgba(255,255,255,.35); }
+.dark .core .item p { color: rgba(255,255,255,.75); }
+@media (max-width: 860px) { .dark .core .item + .item { border-top-color: rgba(255,255,255,.35); } }
 .subintro { margin: 0; color: var(--ink); max-width: 34em; }
 .panel { background: var(--panel); border-radius: 16px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .panel-l { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
@@ -155,7 +160,7 @@ section.block .wrap { padding-block: 88px; }
 
 /* Richiesta */
 .formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
-.formside h2 { font-size: clamp(34px, 4.6vw, 64px); margin: 16px 0 22px; }
+.formside h2 { font-size: clamp(34px, 4.6vw, 64px); margin: 0 0 22px; }
 .formside p { color: var(--gray-600); margin: 0 0 14px; }
 .formside .box { border: 1.5px solid var(--ink); padding: 24px; margin-top: 24px; }
 .formside .box h3 { font-family: var(--font-sans); font-size: 15px; font-weight: 500; letter-spacing: 0; line-height: 1.4; margin-bottom: 12px; }
@@ -339,24 +344,24 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     </div>
   </section>
 
-  <section class="block" id="vantaggi">
+  <section class="block dark" id="vantaggi">
     <div class="wrap">
       <div class="sechead sechead-x">
         <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Cosa mi dà la tessera?</h2></div>
       </div>
       <div class="core">
         <div class="item">
-          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
           <h3>Una felpa EXMA in omaggio</h3>
           <p>Ritirala assieme alla tessera.</p>
         </div>
         <div class="item">
-          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /></svg>
           <h3>Ingresso gratuito e sconti speciali a eventi dedicati</h3>
           <p>I titolari della EXMA Card avranno uno sconto del 20% sugli eventi targati EXMA e accesso gratuito a uno dei nostri eventi del 2027: ti avviseremo via mail.</p>
         </div>
         <div class="item">
-          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></svg>
           <h3>Sconti dedicati presso i nostri partner</h3>
           <p>Scopri quali sono qui sotto.</p>
         </div>
@@ -383,7 +388,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="richiesta">
     <div class="wrap formgrid">
       <div class="formside">
-        <div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>Richiesta</div>
         <h2>Richiedi la tua tessera</h2>
         <p>Compila il modulo. Quando la tessera è pronta ricevi un'email con le indicazioni per il ritiro.</p>
         <div class="box">
@@ -412,6 +416,11 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <label for="privacy">Ho letto l'<a id="privacylink" href="#">informativa privacy della EXMA Card</a> e acconsento al trattamento dei miei dati per il rilascio della tessera.</label>
         </div>
         <div class="field full" style="margin-top:-14px"><span class="err" id="privacyerr"></span></div>
+        <div class="consent">
+          <input id="termini" name="termini" type="checkbox" required>
+          <label for="termini">Accetto i <a id="terminilink" href="#">Termini e Condizioni Generali della EXMA Card</a>.</label>
+        </div>
+        <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
         <div class="submitrow">
           <button class="btn accent" type="submit">Invia richiesta</button>
           <small>Tutti i campi sono obbligatori.</small>
@@ -452,6 +461,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
    Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
    ============================================================ */
 const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
+const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da definire)
 
 const AZIENDE = [
   { nome: "Sardegna Teatro",     vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
@@ -481,6 +491,7 @@ document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.t
 document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
 
 ["privacylink", "privacylink2"].forEach(id => { document.getElementById(id).href = PRIVACY_URL; });
+document.getElementById("terminilink").href = TERMINI_URL;
 
 /* Modulo: controlli e conferma (prototipo, nessun invio reale) */
 const form = document.getElementById("cardform");
@@ -508,7 +519,10 @@ form.addEventListener("submit", e => {
   const priv = document.getElementById("privacy");
   document.getElementById("privacyerr").textContent = priv.checked ? "" : "Per richiedere la tessera serve il consenso al trattamento dei dati.";
   if (!priv.checked) ok = false;
-  if (!ok) { form.querySelector(".invalid input, #privacy:not(:checked)")?.focus(); return; }
+  const term = document.getElementById("termini");
+  document.getElementById("terminierr").textContent = term.checked ? "" : "Per richiedere la tessera devi accettare i Termini e Condizioni.";
+  if (!term.checked) ok = false;
+  if (!ok) { form.querySelector(".invalid input, #privacy:not(:checked), #termini:not(:checked)")?.focus(); return; }
 
   const nome = document.getElementById("nome").value.trim();
   const email = document.getElementById("email").value.trim();
