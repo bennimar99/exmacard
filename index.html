@@ -25,7 +25,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01"; }
 ::selection { background: var(--blue); color: var(--paper); }
 a { color: inherit; }
@@ -48,18 +48,25 @@ strong { font-weight: 600; }
 .btn.outline { background: transparent; color: var(--ink); }
 .btn.outline:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-/* Barra superiore e header: fondo carta, linea sottile */
-.topbar { border-bottom: 1px solid var(--ink); font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; }
-.topbar .wrap { display: flex; gap: 16px; justify-content: space-between; padding-block: 9px; flex-wrap: wrap; }
-.topbar nav { display: flex; gap: 20px; }
-.topbar a { text-decoration: none; }
-.topbar a:hover { color: var(--blue); }
-header.site { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--ink); }
-header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
-.logo img { height: 44px; width: auto; }
-.mainnav { display: flex; gap: 12px; flex-wrap: wrap; font-family: var(--font-sans); font-size: 16px; font-weight: 400; }
-.mainnav a { text-decoration: none; border: 1px solid var(--ink); border-radius: 4px; padding: 10px 20px; line-height: 1.2; transition: background .2s var(--ease), color .2s var(--ease); }
-.mainnav a:hover { background: var(--ink); color: var(--paper); }
+/* Toolbar come exma.earth: logo, due bottoni, menu; sotto la riga, Home e le sezioni della pagina */
+.toolbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px 24px; flex-wrap: wrap; }
+.toolbar .wrap { border-bottom: 1px solid var(--ink); }
+.toolbar .wrap-in { display: contents; }
+.logo img { height: 48px; width: auto; }
+.tools { display: flex; align-items: center; gap: 14px; position: relative; }
+.tbtn { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; line-height: 1.2; text-decoration: none; border: 1px solid var(--ink); border-radius: 4px; padding: 11px 20px; background: var(--paper); color: var(--ink); cursor: pointer; font-family: var(--font-sans); transition: background .2s var(--ease), color .2s var(--ease); }
+.tbtn:hover { background: var(--ink); color: var(--paper); }
+.burger { width: 44px; height: 32px; margin-left: 10px; padding: 0; border: 0; background: none; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
+.burger span { display: block; height: 3px; background: var(--ink); }
+.burger:hover span { background: var(--blue); }
+.menu { position: absolute; top: calc(100% + 16px); right: 0; min-width: 260px; background: var(--paper); border: 1px solid var(--ink); border-radius: 4px; padding: 8px 0; z-index: 200; box-shadow: 0 12px 40px rgba(11,11,11,.12); }
+.menu[hidden] { display: none; }
+.menu a { display: block; padding: 10px 22px; font-size: 18px; font-family: var(--font-display); font-weight: 500; text-decoration: none; }
+.menu a:hover { color: var(--blue); }
+.subnav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--ink); }
+.subnav .wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding-block: 16px; }
+.subnav .home { margin-right: 12px; }
+.subnav a.tbtn { padding: 9px 18px; }
 
 /* Hero */
 .hero { border-bottom: 1px solid var(--ink); }
@@ -83,7 +90,6 @@ header.site .wrap { display: flex; align-items: center; justify-content: space-b
 .card .holder { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0; color: rgba(255,255,255,.7); }
 .card .holder b { display: block; margin-top: 4px; font-family: var(--font-sans); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; color: var(--paper); }
 .card .year { font-weight: 500; font-size: 34px; line-height: 1; letter-spacing: -0.02em; }
-.cardnote { margin-top: 30px; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; color: var(--gray-500); text-align: center; }
 
 /* Foto a tutta larghezza */
 .photo { position: relative; height: clamp(260px, 42vw, 520px); overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--ink); }
@@ -207,8 +213,9 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 }
 @media (max-width: 560px) {
   form { grid-template-columns: 1fr; }
-  .mainnav { gap: 8px; font-size: 14px; }
-  .mainnav a { padding: 8px 12px; }
+  .tb-visita { display: none; }
+  .logo img { height: 36px; }
+  .subnav .tbtn { font-size: 14px; padding: 7px 12px; }
   .card { transform: rotate(-2deg); }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -225,24 +232,36 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <symbol id="xmark" viewBox="0 0 100 100"><g stroke="currentColor" stroke-width="20" stroke-linecap="butt"><line x1="9" y1="9" x2="39" y2="39"/><line x1="61" y1="61" x2="91" y2="91"/><line x1="91" y1="9" x2="61" y2="39"/><line x1="39" y1="61" x2="9" y2="91"/></g></symbol>
 </svg>
 
-<div class="topbar">
-  <div class="wrap">
-    <span>Via S. Lucifero, 71, Cagliari •</span>
-    <nav><a href="https://maps.app.goo.gl/zSpKcbV2zamH7Fdp8">Mappa</a><a href="https://exma.earth">exma.earth</a></nav>
-  </div>
-</div>
-
-<header class="site">
+<header class="toolbar">
   <div class="wrap">
     <a class="logo" href="https://exma.earth" aria-label="EXMA, torna al sito"><img src="assets/exma-wordmark-black.png" alt="EXMA"></a>
-    <nav class="mainnav" aria-label="Sezioni della pagina">
-      <a href="#tessera">La tessera</a>
-      <a href="#prezzi">Prezzi</a>
-      <a href="#vantaggi">Vantaggi</a>
-      <a href="#richiesta">Richiedi</a>
-    </nav>
+    <div class="tools">
+      <a class="tbtn tb-visita" href="https://exma.earth/visita/">Pianifica la tua visita</a>
+      <a class="tbtn" href="https://exma.earth/calendario/">Calendario</a>
+      <button class="burger" id="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <nav class="menu" id="menu" aria-label="Menu di exma.earth" hidden>
+        <a href="https://exma.earth/calendario/">Calendario</a>
+        <a href="https://exma.earth/visita/">Visita</a>
+        <a href="https://exma.earth/social-club/">Eat.Drink.Listen</a>
+        <a href="https://exma.earth/progetto/">EXMA.earth</a>
+        <a href="https://exma.earth/spazi/">Spazi</a>
+        <a href="https://exma.earth/progetto/#mission">Missione, Partner</a>
+        <a href="https://exma.earth/progetto/#sostieni">Sostieni l’EXMA</a>
+        <a href="https://exma.earth/progetto/#contatti">Contatti</a>
+      </nav>
+    </div>
   </div>
 </header>
+
+<nav class="subnav" aria-label="Sezioni della pagina">
+  <div class="wrap">
+    <a class="tbtn home" href="https://exma.earth">Home &#8592;</a>
+    <a class="tbtn" href="#tessera">La tessera</a>
+    <a class="tbtn" href="#prezzi">Prezzi</a>
+    <a class="tbtn" href="#vantaggi">Vantaggi</a>
+    <a class="tbtn" href="#richiesta">Richiedi</a>
+  </div>
+</nav>
 
 <main>
   <section class="hero" id="tessera">
@@ -267,7 +286,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
             <div class="year">2027</div>
           </div>
         </div>
-        <div class="cardnote">Anteprima indicativa · 85,6 × 54 mm · plastica riciclata</div>
       </div>
     </div>
   </section>
@@ -457,6 +475,13 @@ AZIENDE.forEach(a => {
   });
   tbody.appendChild(tr);
 });
+
+/* Menu a tendina della toolbar */
+const burger = document.getElementById("burger"), menu = document.getElementById("menu");
+function toggleMenu(open) { menu.hidden = !open; burger.setAttribute("aria-expanded", String(open)); }
+burger.addEventListener("click", e => { e.stopPropagation(); toggleMenu(menu.hidden); });
+document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) toggleMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
 
 ["privacylink", "privacylink2"].forEach(id => { document.getElementById(id).href = PRIVACY_URL; });
 
