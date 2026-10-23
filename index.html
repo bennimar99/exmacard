@@ -185,6 +185,11 @@ form { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; min-width:
 label { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; }
 input[type="text"], input[type="email"], input[type="tel"], input[type="date"] { font: inherit; color: var(--ink); background: var(--paper); border: 0; border-bottom: 1.5px solid var(--ink); padding: 11px 2px; width: 100%; border-radius: 0; }
 input:focus { outline: none; box-shadow: none; border-bottom-color: var(--blue); box-shadow: 0 1.5px 0 var(--blue); }
+select { font: inherit; color: var(--ink); background: var(--paper); border: 0; border-bottom: 1.5px solid var(--ink); border-radius: 0; padding: 11px 2px; width: 100%; }
+select:focus { outline: none; border-bottom-color: var(--blue); box-shadow: 0 1.5px 0 var(--blue); }
+.field.invalid select { border-bottom-color: var(--err); }
+.hint { color: var(--gray-500); font-size: 13px; }
+.reqnote { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--gray-500); }
 .field .err { color: var(--err); font-size: 13px; min-height: 1em; }
 .field.invalid input { border-bottom-color: var(--err); }
 fieldset.radios { grid-column: 1 / -1; display: flex; gap: 12px; flex-wrap: wrap; border: 0; padding: 0; margin: 0; }
@@ -251,7 +256,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 
 <div class="topbar">
   <div class="wrap">
-    <span>Via S. Lucifero, 71, Cagliari &bull;</span>
+    <span>Via San Lucifero 71, 09127 Cagliari &bull;</span>
     <a href="https://maps.app.goo.gl/XqnL2Jv7yn8tmDLg6" target="_blank" rel="noopener">Mappa &#8599;&#xFE0E;</a>
     <a href="https://exma.earth/?s=" target="_blank" rel="noopener">Cerca <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a>
   </div>
@@ -295,12 +300,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="tab" href="#vantaggi">Vantaggi</a>
           <a class="tab" href="#richiesta">Richiedi</a>
         </nav>
-        <p class="lead">La card per chi vive l'EXMA: sconti speciali, ingresso gratuito o scontato a eventi dedicati, e la felpa EXMA.</p>
+        <p class="lead">La card per chi vive l'EXMA: 20% di sconto sulle mostre EXMA, vantaggi presso i nostri partner e la felpa EXMA inclusa.</p>
         <div class="actions">
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
         </div>
-        <p class="physical">La tessera è nominativa e valida fino al 31.12.2027. La tessera è solo fisica: dopo la richiesta online, la ritiri di persona in EXMA, in via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
+        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta e il pagamento online la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
       </div>
       <div class="cardstage">
         <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
@@ -325,10 +330,10 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block support" id="sostegno">
     <div class="wrap">
       <div class="sechead">
-        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Diventa parte attiva dell'EXMA</h2></div>
+        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Vivi l'EXMA da vicino</h2></div>
         <div class="supporttext">
-          <p>L'EXMA è da sempre di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono"!</p>
-          <p>Tutti i proventi della EXMA Card servono a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
+          <p>L'EXMA è di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono".</p>
+          <p>Il ricavato della EXMA Card contribuisce a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
         </div>
       </div>
     </div>
@@ -338,18 +343,18 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Quanto costa</h2></div>
-        <p>La tessera è nominativa e personale, non si può cedere né prestare. È valida per tutto l'anno solare: la tessera 2027 scade il 31 dicembre 2027. Se la ritiri prima, nel 2026, i vantaggi valgono da subito. Il pagamento si fa all'EXMA quando ritiri la tessera.</p>
+        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si effettua online al momento della richiesta.</p>
       </div>
       <div class="prices">
         <div class="price">
           <h3>Ridotto</h3>
-          <div class="amount">50 €<small>/ anno</small></div>
-          <p>Under 35. Al ritiro porta un documento d'identità che attesti l'età.</p>
+          <div class="amount">50 €</div>
+          <p>Fino a 34 anni compiuti. Al ritiro porta un documento d'identità che attesti l'età. Se l'età non corrisponde alla tariffa scelta, la differenza va versata in sede.</p>
         </div>
         <div class="price">
           <h3>Intero</h3>
-          <div class="amount">100 €<small>/ anno</small></div>
-          <p>Per gli over 35.</p>
+          <div class="amount">100 €</div>
+          <p>Per chi ha 35 anni e oltre.</p>
         </div>
       </div>
     </div>
@@ -359,12 +364,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Tre passaggi</h2></div>
-        <p>Richiedi la tua EXMA Card online compilando il modulo qui sotto e ritirala in EXMA (via San Lucifero 71, Cagliari).</p>
+        <p>Richiedi la tua EXMA Card online, pagala con Stripe e ritirala in EXMA (Via San Lucifero 71, Cagliari).</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati in questa pagina. Bastano due minuti.</p></div>
+        <div class="step"><div class="n">01</div><h3>Compila il modulo e paga online</h3><p>Inserisci i tuoi dati e completa il pagamento. Bastano pochi minuti.</p></div>
         <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando la tua tessera è pronta per il ritiro.</p></div>
-        <div class="step"><div class="n">03</div><h3>Ritirala all'EXMA</h3><p>Passa in Via S. Lucifero 71 con un documento d'identità e paga la tessera. Insieme alla tessera ricevi la tua felpa.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritirala in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità. Insieme alla tessera ricevi la tua felpa.</p></div>
       </div>
     </div>
   </section>
@@ -377,13 +382,13 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <div class="core">
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
-          <h3>Una felpa EXMA in omaggio</h3>
+          <h3>Una felpa EXMA inclusa</h3>
           <p>Ritirala assieme alla tessera.</p>
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /></svg>
-          <h3>Ingresso gratuito e sconti speciali a eventi dedicati</h3>
-          <p>I titolari della EXMA Card avranno uno sconto del 20% sugli eventi targati EXMA e accesso gratuito a uno dei nostri eventi del 2027: ti avviseremo via mail.</p>
+          <h3>Sconto del 20% su tutte le mostre EXMA</h3>
+          <p>Il 20% vale su tutte le mostre organizzate direttamente da EXMA (CLOE società consortile). Non si applica a eventi di terzi o con biglietteria propria dei partner. Altre iniziative dedicate ai titolari ti saranno comunicate via email.</p>
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></svg>
@@ -399,7 +404,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <div class="panel">
         <div class="panel-l">
           <h2>Sconti offerti dai nostri partner</h2>
-          <p class="subintro">EXMA.earth è il progetto dell'impresa consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri gli sconti che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento.</p>
+          <p class="subintro">EXMA.earth è il progetto della società consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri gli sconti che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento.</p>
           <svg class="xpanel" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg>
         </div>
         <div class="panel-r">
@@ -417,7 +422,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <p>Compila il modulo. Quando la tessera è pronta ricevi un'email con le indicazioni per il ritiro.</p>
         <div class="box">
           <h3>Ritiro in sede</h3>
-          <p>EXMA, Via S. Lucifero 71, 09127 Cagliari</p>
+          <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
+          <p>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
           <p>Porta un documento d'identità valido.</p>
           <p>La tessera è intestata a te e la ritiri solo tu.</p>
           <p style="color:var(--gray-600)">La tessera non viene spedita e non ha una versione digitale.</p>
@@ -427,10 +433,10 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <form id="cardform" novalidate>
         <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" required><span class="err"></span></div>
         <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" autocomplete="family-name" required><span class="err"></span></div>
-        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><span class="err"></span></div>
+        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><small class="hint">Serve a verificare la tariffa.</small><span class="err"></span></div>
         <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
-        <div class="field full"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
+        <div class="field full"><label for="taglia">Taglia felpa</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select><span class="err"></span></div>
         <fieldset class="radios">
           <legend>Tariffa</legend>
           <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
@@ -438,17 +444,19 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         </fieldset>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
+          <!-- TODO: URL reale prima della pubblicazione -->
           <label for="privacy">Ho letto l'<a id="privacylink" href="#">informativa privacy della EXMA Card</a> e acconsento al trattamento dei miei dati per il rilascio della tessera.</label>
         </div>
         <div class="field full" style="margin-top:-14px"><span class="err" id="privacyerr"></span></div>
         <div class="consent">
           <input id="termini" name="termini" type="checkbox" required>
+          <!-- TODO: URL reale prima della pubblicazione -->
           <label for="termini">Accetto i <a id="terminilink" href="#">Termini e Condizioni Generali della EXMA Card</a>.</label>
         </div>
         <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
+        <p class="reqnote">Tutti i campi sono obbligatori.</p>
         <div class="submitrow">
-          <button class="btn accent" type="submit">Invia richiesta</button>
-          <small>Tutti i campi sono obbligatori.</small>
+          <button class="btn accent" type="submit">Invia richiesta e paga</button>
         </div>
       </form>
     </div>
@@ -463,10 +471,11 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     </div>
     <div>
       <p><strong>Progetto EXMA.Earth</strong></p>
-      <p>Via S. Lucifero, 71<br>09127 Cagliari CA</p>
+      <p>Via San Lucifero 71, 09127 Cagliari</p>
       <p>info@exma.earth</p>
     </div>
     <div>
+      <!-- TODO: URL reale prima della pubblicazione -->
       <p><a id="privacylink2" href="#">Privacy policy EXMA Card</a></p>
       <p><a href="https://exma.earth">exma.earth</a></p>
       <p><a href="https://www.instagram.com/exma.earth">Instagram</a></p>
@@ -474,8 +483,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   </div>
   <div class="partners">
     <div class="wrap">
-      <div class="eyebrow">Il consorzio CLOE</div>
-      <img src="assets/partners-strip.png" alt="Sardegna Teatro, Fuorimargine, The Net Value, Area X, Radio X" loading="lazy">
+      <div class="eyebrow">La società consortile CLOE</div>
+      <img src="assets/partners-strip.png" alt="Teatro di Sardegna, Fuorimargine, The Net Value, Area X, Radio X" loading="lazy">
     </div>
   </div>
 </footer>
@@ -486,6 +495,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
    Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
    ============================================================ */
 const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
+const STRIPE_LINK = { ridotta: "[LINK_STRIPE_50]", intera: "[LINK_STRIPE_100]" }; // da sostituire con i link di pagamento Stripe
 const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da definire)
 
 const AZIENDE = [
@@ -539,7 +549,7 @@ form.addEventListener("submit", e => {
   let ok = true;
   const msgs = {
     nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
-    indirizzo: "Inserisci l'indirizzo completo.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
+    taglia: "Scegli la taglia della felpa.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
     telefono: "Inserisci un numero di telefono valido."
   };
   Object.keys(msgs).forEach(id => {
@@ -561,12 +571,17 @@ form.addEventListener("submit", e => {
 
   const nome = document.getElementById("nome").value.trim();
   const email = document.getElementById("email").value.trim();
+  const ridotta = document.getElementById("t-ridotta").checked;
+  const link = STRIPE_LINK[ridotta ? "ridotta" : "intera"];
+  if (/^https:\/\//.test(link)) { window.location.href = link; return; }
+
+  /* Link Stripe non ancora configurato: mostra la conferma di prova */
   form.innerHTML = "";
   const d = document.createElement("div");
   d.className = "done";
-  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera è pronta la ritiri all'EXMA, Via S. Lucifero 71, Cagliari, con un documento d'identità.</p><p style='color:var(--gray-500);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati.</p>";
-  const tariffa = document.getElementById("t-ridotta").checked ? "ridotta (50 €)" : "intera (100 €)";
-  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card sarà pronta. Tariffa scelta: " + tariffa + ", da pagare al ritiro.";
+  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera è pronta la ritiri in EXMA, Via San Lucifero 71, 09127 Cagliari, con un documento d'identità.</p><p style='color:var(--gray-500);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati e il pagamento Stripe non è ancora collegato.</p>";
+  const tariffa = ridotta ? "ridotta (50 €)" : "intera (100 €)";
+  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card sarà pronta. Tariffa scelta: " + tariffa + ".";
   form.appendChild(d);
 });
 </script>
