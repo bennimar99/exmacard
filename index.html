@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>EXMA Card · Fai parte dell'X</title>
+<title>EXMA Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap"><style>
@@ -56,25 +56,25 @@ strong { font-weight: 600; }
 .topbar a:hover { color: var(--blue); }
 header.site { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--ink); }
 header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
-.logo img { height: 30px; width: auto; }
-.mainnav { display: flex; gap: 26px; flex-wrap: wrap; font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; }
-.mainnav a { text-decoration: none; }
-.mainnav a:hover { color: var(--blue); }
+.logo img { height: 44px; width: auto; }
+.mainnav { display: flex; gap: 12px; flex-wrap: wrap; font-family: var(--font-sans); font-size: 16px; font-weight: 400; }
+.mainnav a { text-decoration: none; border: 1px solid var(--ink); border-radius: 4px; padding: 10px 20px; line-height: 1.2; transition: background .2s var(--ease), color .2s var(--ease); }
+.mainnav a:hover { background: var(--ink); color: var(--paper); }
 
 /* Hero */
 .hero { border-bottom: 1px solid var(--ink); }
 .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding-block: 72px 64px; }
-.hero h1 { font-size: clamp(48px, 7.4vw, 112px); line-height: .94; letter-spacing: -0.02em; margin: 26px 0 30px; }
+.hero h1 { font-size: clamp(48px, 7.4vw, 112px); line-height: .94; letter-spacing: -0.02em; margin: 0 0 30px; }
 .hero h1 em { font-style: normal; color: var(--blue); }
 .hero .lead { font-size: 20px; max-width: 32em; color: var(--ink); }
 .pricehint { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--gray-600); margin: 0 0 28px; line-height: 1.7; }
 .actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.physical { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--gray-200); font-size: 15px; color: var(--gray-600); max-width: 34em; }
+.physical { margin: 32px 0 0; padding-top: 20px; border-top: 1px solid var(--gray-200); font-size: 16px; color: var(--gray-600); max-width: 34em; }
 .physical strong { color: var(--ink); }
 
 /* Tessera: nera, wordmark bianco, X azzurra */
 .cardstage { display: grid; place-items: center; min-width: 0; }
-.card { width: min(100%, 440px); aspect-ratio: 85.6 / 54; position: relative; overflow: hidden; background: var(--ink); color: var(--paper); padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-4deg); box-shadow: 0 12px 40px rgba(11,11,11,.12), 0 30px 60px -30px rgba(11,11,11,.45); }
+.card { width: min(100%, 440px); border-radius: 16px; aspect-ratio: 85.6 / 54; position: relative; overflow: hidden; background: var(--ink); color: var(--paper); padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-4deg); box-shadow: 0 12px 40px rgba(11,11,11,.12), 0 30px 60px -30px rgba(11,11,11,.45); }
 .card > * { position: relative; }
 .card .row { display: flex; justify-content: space-between; align-items: flex-start; }
 .card .brand img { height: 26px; width: auto; }
@@ -95,6 +95,8 @@ header.site .wrap { display: flex; align-items: center; justify-content: space-b
 section.block { border-bottom: 1px solid var(--ink); }
 section.block .wrap { padding-block: 88px; }
 .sechead { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 48px; align-items: end; }
+.xside { display: block; width: 150px; height: 150px; color: var(--blue); margin-bottom: 36px; }
+.sechead-x { margin-bottom: 40px; }
 .sechead h2 { font-size: clamp(34px, 4.6vw, 64px); margin-top: 16px; }
 .sechead p { margin: 0; max-width: 40em; color: var(--gray-600); }
 
@@ -125,9 +127,9 @@ section.block .wrap { padding-block: 88px; }
 
 /* Vantaggi */
 .core { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); margin-bottom: 64px; }
-.core .item { padding: 32px 28px 32px 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.core .item + .item { padding-left: 28px; border-left: 1px solid var(--ink); }
-.core .item .x { width: 44px; height: 44px; color: var(--blue); }
+.core .item { padding: 36px 28px; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.core .item + .item { border-left: 1px solid var(--ink); }
+.core .item .x { width: 64px; height: 64px; color: var(--blue); }
 .core .item .big { font-weight: 500; font-size: 64px; line-height: .9; letter-spacing: -0.02em; color: var(--blue); }
 .core .item h3 { font-size: 28px; letter-spacing: -0.02em; }
 .core .item p { margin: 0; color: var(--gray-600); }
@@ -205,7 +207,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 }
 @media (max-width: 560px) {
   form { grid-template-columns: 1fr; }
-  .mainnav { gap: 14px; font-size: 13px; }
+  .mainnav { gap: 8px; font-size: 14px; }
+  .mainnav a { padding: 8px 12px; }
   .card { transform: rotate(-2deg); }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -245,24 +248,19 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="hero" id="tessera">
     <div class="wrap">
       <div>
-        <div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>EXMA Card · Centro d'arte e cultura</div>
-        <h1>Fai parte dell'<em>X</em></h1>
-        <p class="lead">Una tessera per chi vive l'EXMA: una felpa in omaggio, un evento speciale gratuito, il 20% di sconto sugli ingressi del consorzio e i vantaggi di consorziati e partner. Stampata su plastica riciclata, con un design pensato per durare.</p>
-        <p class="pricehint">Nominativa · Valida fino al 31.12.2027 · Vantaggi da subito<br>50 € ridotta · 100 € intera</p>
+        <h1>EXMA Card</h1>
+        <p class="lead">La card per chi vive l'EXMA: sconti speciali, ingresso gratuito o scontato a eventi dedicati, e la felpa EXMA.</p>
         <div class="actions">
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
         </div>
-        <div class="physical">
-          <strong>Solo tessera fisica.</strong> Non esiste una versione digitale: dopo la richiesta online la ritiri di persona all'EXMA, in Via S. Lucifero 71 a Cagliari, con un documento d'identità.
-        </div>
+        <p class="physical">La tessera è nominativa e valida fino al 31.12.2027. La tessera è solo fisica: dopo la richiesta online, la ritiri di persona in EXMA, in via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
       </div>
       <div class="cardstage">
         <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
           <svg class="bigx" aria-hidden="true"><use href="#xmark"/></svg>
           <div class="row">
             <div class="brand"><img src="assets/exma-wordmark-white.png" alt=""></div>
-            <div class="tag">Card<br>Cagliari</div>
           </div>
           <div class="row" style="align-items:flex-end">
             <div class="holder">Titolare<b>Nome Cognome</b></div>
@@ -282,10 +280,10 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block support" id="sostegno">
     <div class="wrap">
       <div class="sechead">
-        <div><div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>Perché la tessera</div><h2>Chi la porta, la fa vivere</h2></div>
+        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Diventa parte attiva dell'EXMA</h2></div>
         <div class="supporttext">
-          <p>L'EXMA è uno dei luoghi più belli di Cagliari, e da sempre è di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono" e per far parte di questa community.</p>
-          <p><strong>Ogni euro delle tessere va alle attività culturali del centro.</strong> Con la tua tessera sostieni il cartellone, porti nuovi artisti in città e aiuti l'EXMA a tornare il punto di riferimento della Cagliari più viva.</p>
+          <p>L'EXMA è da sempre di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono"!</p>
+          <p>Tutti i proventi della EXMA Card servono a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
         </div>
       </div>
     </div>
@@ -294,19 +292,19 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="prezzi">
     <div class="wrap">
       <div class="sechead">
-        <div><div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>Prezzi</div><h2>Quanto costa</h2></div>
-        <p>La tessera è nominativa e personale, non si può cedere né prestare. Vale per l'anno solare: la tessera 2027 scade il 31 dicembre 2027. Se la ritiri prima, nel 2026, i vantaggi valgono da subito. Il pagamento si fa all'EXMA quando ritiri la tessera.</p>
+        <div><div class="eyebrow"><svg class="xm" aria-hidden="true"><use href="#xmark"/></svg>Prezzi</div><h2>Quanto costa</h2></div>
+        <p>La tessera è nominativa e personale, non si può cedere né prestare. È valida per tutto l'anno solare: la tessera 2027 scade il 31 dicembre 2027. Se la ritiri prima, nel 2026, i vantaggi valgono da subito. Il pagamento si fa all'EXMA quando ritiri la tessera.</p>
       </div>
       <div class="prices">
         <div class="price">
           <div class="eyebrow">Tariffa ridotta</div>
           <div class="amount">50 €<small>/ anno</small></div>
-          <p>Studenti e over 65. Al ritiro porta il tesserino universitario o scolastico, oppure un documento che attesti l'età.</p>
+          <p>Under 35. Al ritiro porta un documento d'identità che attesti l'età.</p>
         </div>
         <div class="price">
           <div class="eyebrow">Tariffa intera</div>
           <div class="amount">100 €<small>/ anno</small></div>
-          <p>Per tutti gli altri.</p>
+          <p>Per gli over 35.</p>
         </div>
       </div>
     </div>
@@ -315,8 +313,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="come">
     <div class="wrap">
       <div class="sechead">
-        <div><div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>Come funziona</div><h2>Tre passaggi</h2></div>
-        <p>La richiesta si fa online, la tessera si ritira in sede. La consegna è sempre di persona, perché la tessera è un oggetto fisico pensato per farti tornare all'EXMA.</p>
+        <div><h2>Tre passaggi</h2></div>
+        <p>Richiedi la tua EXMA Card online compilando il modulo qui sotto e ritirala in EXMA (via San Lucifero 71, Cagliari).</p>
       </div>
       <div class="steps">
         <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati in questa pagina. Bastano due minuti.</p></div>
@@ -328,45 +326,39 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 
   <section class="block" id="vantaggi">
     <div class="wrap">
-      <div class="sechead">
-        <div><div class="eyebrow"><svg class="xm"><use href="#xmark"/></svg>Vantaggi</div><h2>Cosa ti dà la tessera</h2></div>
-        <p>Tre vantaggi offerti dal consorzio che gestisce l'EXMA, più i benefici proposti da ogni consorziato e partner. La tessera è nominativa: i vantaggi valgono solo per il titolare, che può dover mostrare un documento insieme alla EXMA Card.</p>
+      <div class="sechead sechead-x">
+        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Cosa mi dà la tessera?</h2></div>
       </div>
-
-      <div class="eyebrow" style="margin-bottom:16px">Inclusi nella tessera · offerti dal consorzio EXMA</div>
       <div class="core">
         <div class="item">
-          <svg class="x" viewBox="0 0 100 100" aria-hidden="true" style="width:44px;height:44px;color:var(--blue)"><use href="#xmark"/></svg>
-          <h3>Felpa EXMA in omaggio</h3>
-          <p>La ricevi quando ritiri la tessera. Una per tessera.</p>
+          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <h3>Una felpa EXMA in omaggio</h3>
+          <p>Ritirala assieme alla tessera.</p>
         </div>
         <div class="item">
-          <svg class="x" viewBox="0 0 100 100" aria-hidden="true" style="width:44px;height:44px;color:var(--blue)"><use href="#xmark"/></svg>
-          <h3>Un evento speciale gratis</h3>
-          <p>Ingresso gratuito a un evento speciale prodotto dal consorzio durante il 2027.</p>
+          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <h3>Ingresso gratuito e sconti speciali a eventi dedicati</h3>
+          <p>I titolari della EXMA Card avranno uno sconto del 20% sugli eventi targati EXMA e accesso gratuito a uno dei nostri eventi del 2027: ti avviseremo via mail.</p>
         </div>
         <div class="item">
-          <div class="big">−20%</div>
-          <h3>Sul biglietto d'ingresso</h3>
-          <p>Sconto del 20% sul biglietto di diverse attività culturali prodotte dal consorzio: mostre, spettacoli, concerti.</p>
+          <svg class="x" viewBox="0 0 100 100" aria-hidden="true"><use href="#xmark"/></svg>
+          <h3>Sconti dedicati presso i nostri partner</h3>
+          <p>Scopri quali sono qui sotto.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <h3 class="subhead">Vantaggi di consorziati e partner</h3>
-      <p class="subintro">Ogni consorziato e ogni partner del progetto propone i benefici che riserva ai titolari della card.</p>
-
-      <div class="filters" role="group" aria-label="Filtra le aziende">
-        <button class="chip" type="button" data-f="tutti" aria-pressed="true">Tutti</button>
-        <button class="chip" type="button" data-f="consorziata" aria-pressed="false">Consorziate</button>
-        <button class="chip" type="button" data-f="partner" aria-pressed="false">Partner</button>
-      </div>
+  <section class="block" id="partner">
+    <div class="wrap">
+      <h2 class="subhead">Sconti offerti dai nostri partner</h2>
+      <p class="subintro">EXMA.earth è il progetto dell'impresa consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri gli sconti che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento.</p>
       <div class="tablewrap">
         <table>
-          <thead><tr><th style="width:24%">Azienda</th><th style="width:14%">Tipo</th><th style="width:30%">Vantaggio</th><th>Come usarlo</th></tr></thead>
+          <thead><tr><th style="width:30%">Partner</th><th>Sconto</th></tr></thead>
           <tbody id="perks"></tbody>
         </table>
       </div>
-      <p class="demo-note">Prototipo: le aziende e i vantaggi in tabella sono esempi da sostituire con quelli dichiarati da ciascun partner.</p>
       <p class="joinpartner">Sei un'azienda e vuoi entrare nel network? Scrivi a <strong>info@exma.earth</strong>.</p>
     </div>
   </section>
@@ -395,8 +387,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
         <fieldset class="radios">
           <legend>Tariffa</legend>
-          <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · studenti e over 65</span></label>
-          <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 €</span></label>
+          <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
+          <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 € · Over 35</span></label>
         </fieldset>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
@@ -441,50 +433,30 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 /* ============================================================
    CONTENUTI MODIFICABILI
    Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
-   tipo: "consorziata" oppure "partner"
    ============================================================ */
 const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
 
 const AZIENDE = [
-  { nome: "Sardegna Teatro",       tipo: "consorziata", vantaggio: "Prelazione sui posti per le prime",       come: "Mostra la tessera alla biglietteria" },
-  { nome: "Radio X Social Club",   tipo: "consorziata", vantaggio: "Una consumazione omaggio ogni 10",        come: "Timbro sulla tessera a ogni consumazione" },
-  { nome: "Fuorimargine",          tipo: "consorziata", vantaggio: "Ingresso ridotto ai workshop",            come: "Indica il numero di tessera all'iscrizione" },
-  { nome: "The Net Value",         tipo: "consorziata", vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi", come: "Mostra la tessera all'ingresso del coworking" },
-  { nome: "Libreria di quartiere", tipo: "partner",     vantaggio: "15% di sconto su libri e riviste",        come: "Mostra la tessera in cassa" },
-  { nome: "Bike sharing urbano",   tipo: "partner",     vantaggio: "Primo mese di abbonamento gratuito",      come: "Codice consegnato al ritiro della tessera" }
+  { nome: "Sardegna Teatro",     vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
+  { nome: "Fuorimargine",        vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
+  { nome: "Radio X Social Club", vantaggio: "Sconto al Bar del 15%" },
+  { nome: "The Net Value",       vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi" },
+  { nome: "Tuttestorie",         vantaggio: "Sconto del x% sui libri (da confermare)" },
+  { nome: "Spazio Mesu",         vantaggio: "xxxx" }
 ];
 
 /* ---------- da qui in giù il codice della pagina ---------- */
 const tbody = document.getElementById("perks");
-function renderPerks(filtro) {
-  tbody.innerHTML = "";
-  AZIENDE.filter(a => filtro === "tutti" || a.tipo === filtro).forEach(a => {
-    const tr = document.createElement("tr");
-    const cells = [
-      ["name", a.nome],
-      ["", null],
-      ["perk", a.vantaggio],
-      ["how", a.come]
-    ];
-    cells.forEach(([cls, txt], i) => {
-      const td = document.createElement("td");
-      if (cls) td.className = cls;
-      if (i === 1) {
-        const p = document.createElement("span");
-        p.className = "pill " + (a.tipo === "consorziata" ? "cons" : "part");
-        p.textContent = a.tipo === "consorziata" ? "Consorziata" : "Partner";
-        td.appendChild(p);
-      } else td.textContent = txt;
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
+AZIENDE.forEach(a => {
+  const tr = document.createElement("tr");
+  [["name", a.nome], ["perk", a.vantaggio]].forEach(([cls, txt]) => {
+    const td = document.createElement("td");
+    td.className = cls;
+    td.textContent = txt;
+    tr.appendChild(td);
   });
-}
-renderPerks("tutti");
-document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === b)));
-  renderPerks(b.dataset.f);
-}));
+  tbody.appendChild(tr);
+});
 
 ["privacylink", "privacylink2"].forEach(id => { document.getElementById(id).href = PRIVACY_URL; });
 
