@@ -1,0 +1,529 @@
+<title>EXMA Card</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: banda indirizzo + header come exma.earth, poi sezioni a tutta larghezza su griglia 12 colonne, motivo "X" come segno grafico */
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+  --muted: #5b5d66;
+  --line: #d9dae0;
+  --soft: #f2f3f6;
+  --accent: #1f3dff;
+  --accent-ink: #ffffff;
+  --ok: #0f7a3d;
+  --err: #c0262d;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1013; --ink: #f1f1f3; --muted: #a3a6b1; --line: #2c2e36; --soft: #181a20;
+    --accent: #6e83ff; --accent-ink: #0f1013; --ok: #4cc27f; --err: #ff6b70; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1013; --ink: #f1f1f3; --muted: #a3a6b1; --line: #2c2e36; --soft: #181a20;
+  --accent: #6e83ff; --accent-ink: #0f1013; --ok: #4cc27f; --err: #ff6b70; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+.eyebrow { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Banda indirizzo */
+.topbar { border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.topbar .wrap { display: flex; gap: 16px; justify-content: space-between; align-items: center; padding-block: 8px; flex-wrap: wrap; }
+.topbar nav { display: flex; gap: 18px; }
+.topbar a { text-decoration: none; }
+
+/* Header */
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-weight: 900; font-stretch: 125%; font-size: 34px; letter-spacing: -.02em; text-decoration: none; line-height: 1; }
+.logo span { color: var(--accent); }
+.mainnav { display: flex; gap: 22px; flex-wrap: wrap; font-family: var(--display); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+.mainnav a { text-decoration: none; }
+.mainnav a[aria-current] { color: var(--accent); }
+
+/* Hero */
+.hero { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding-block: 56px; }
+.hero h1 { font-weight: 900; font-stretch: 112%; font-size: clamp(44px, 7vw, 92px); line-height: .92; text-transform: uppercase; letter-spacing: -.02em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lead { font-size: 19px; max-width: 34em; margin: 22px 0 28px; color: var(--ink); }
+.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--accent-ink); font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; padding: 14px 22px; border: 0; text-decoration: none; cursor: pointer; }
+.cta:hover { filter: brightness(1.08); }
+.cta.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.physical { margin-top: 28px; display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--muted); max-width: 34em; }
+.physical svg { flex: none; margin-top: 3px; }
+
+/* Tessera */
+.cardstage { display: grid; place-items: center; min-width: 0; }
+.card {
+  width: min(100%, 420px); aspect-ratio: 85.6 / 54; border-radius: 16px; position: relative; overflow: hidden;
+  background: #1f3dff; color: #fff; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 30px 60px -25px rgba(20, 30, 120, .55); transform: rotate(-4deg);
+}
+.card canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.card > *:not(canvas) { position: relative; }
+.card .row { display: flex; justify-content: space-between; align-items: flex-start; }
+.card .brand { font-family: var(--display); font-weight: 900; font-stretch: 125%; font-size: 30px; line-height: 1; }
+.card .tag { font-family: var(--display); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; text-align: right; }
+.card .big-x { font-family: var(--display); font-weight: 900; font-size: 120px; line-height: .7; position: absolute; right: 18px; bottom: 26px; opacity: .18; }
+.card .holder { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.card .year { font-family: var(--display); font-weight: 900; font-stretch: 112%; font-size: 30px; line-height: 1; letter-spacing: .02em; }
+.card .holder b { display: block; font-size: 18px; letter-spacing: .04em; }
+.cardnote { margin-top: 26px; font-size: 13px; color: var(--muted); text-align: center; }
+
+/* Sezioni */
+section.block .wrap { padding-block: 64px; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.sechead { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-bottom: 36px; align-items: end; }
+.sechead h2 { font-weight: 800; font-stretch: 112%; font-size: clamp(30px, 4vw, 48px); text-transform: uppercase; line-height: 1; letter-spacing: -.01em; }
+.sechead p { margin: 0; max-width: 40em; color: var(--muted); }
+
+/* Come funziona: è un vero processo in sequenza */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+.step { padding: 22px 24px 8px 0; min-width: 0; }
+.step + .step { padding-left: 24px; border-left: 1px solid var(--line); }
+.step .n { font-family: var(--display); font-weight: 900; font-size: 15px; color: var(--accent); letter-spacing: .08em; }
+.step h3 { font-size: 22px; font-weight: 700; margin: 8px 0 8px; text-transform: uppercase; }
+.step p { margin: 0; color: var(--muted); }
+
+/* Sostegno */
+.support { background: var(--accent); color: var(--accent-ink); }
+.support .eyebrow { color: var(--accent-ink); opacity: .8; }
+.support .sechead { margin-bottom: 0; align-items: start; }
+.supporttext { min-width: 0; max-width: 40em; font-size: 18px; }
+.supporttext p { margin: 0 0 14px; color: var(--accent-ink); }
+.supporttext p:last-child { margin-bottom: 0; }
+
+/* Prezzi */
+.prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); }
+.price { padding: 24px 24px 8px 0; min-width: 0; }
+.price + .price { padding-left: 24px; border-left: 1px solid var(--line); }
+.price .amount { font-family: var(--display); font-weight: 900; font-stretch: 112%; font-size: clamp(48px, 6vw, 72px); line-height: 1; margin: 10px 0 12px; font-variant-numeric: tabular-nums; }
+.price .amount small { font-size: 18px; font-weight: 600; color: var(--muted); margin-left: 8px; letter-spacing: .04em; }
+.price p { margin: 0; color: var(--muted); max-width: 32em; }
+.hero .pricehint { margin: -12px 0 24px; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.radios { grid-column: 1 / -1; display: flex; gap: 12px; flex-wrap: wrap; border: 0; padding: 0; margin: 0; }
+.radios legend { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; padding: 0; }
+.radio { display: flex; gap: 10px; align-items: center; border: 1.5px solid var(--line); padding: 12px 16px; cursor: pointer; flex: 1 1 220px; }
+.radio:has(input:checked) { border-color: var(--accent); }
+.radio input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
+.radio span { font-family: var(--body); font-size: 15px; text-transform: none; letter-spacing: 0; font-weight: 500; }
+
+/* Vantaggi del consorzio */
+.core { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.core .item { background: var(--soft); padding: 24px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.core .item svg { width: 56px; height: 56px; }
+.core .item h3 { font-size: 22px; font-weight: 800; text-transform: uppercase; line-height: 1.05; }
+.core .item .big { font-family: var(--display); font-weight: 900; font-stretch: 112%; font-size: 56px; line-height: 1; color: var(--accent); }
+.core .item p { margin: 0; color: var(--muted); }
+.subhead { font-family: var(--display); font-weight: 800; font-size: 22px; text-transform: uppercase; margin: 0 0 6px; }
+.subintro { margin: 0 0 18px; color: var(--muted); max-width: 46em; }
+@media (max-width: 860px) { .core { grid-template-columns: 1fr; } }
+
+/* Felpa */
+.gift { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; background: var(--soft); padding: 28px; margin-bottom: 36px; }
+.gift svg { width: 96px; height: 96px; }
+.gift h3 { font-size: 26px; font-weight: 800; text-transform: uppercase; }
+.gift p { margin: 6px 0 0; color: var(--muted); max-width: 46em; }
+
+/* Tabella vantaggi */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.chip { font-family: var(--display); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: 7px 14px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.tablewrap { overflow-x: auto; border-top: 2px solid var(--ink); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th { text-align: left; font-family: var(--display); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); }
+td { padding: 16px 12px 16px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.name { font-family: var(--display); font-weight: 700; font-size: 17px; }
+td.perk { font-weight: 600; }
+td.how { color: var(--muted); font-size: 15px; }
+.pill { display: inline-block; font-family: var(--display); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.cons { color: var(--accent); }
+.pill.part { color: var(--muted); }
+.demo-note { margin-top: 14px; font-size: 13px; color: var(--muted); }
+.joinpartner { margin-top: 20px; font-size: 15px; }
+
+/* Modulo */
+.formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; }
+.formside p { color: var(--muted); margin: 0 0 14px; }
+.formside .box { border: 1.5px solid var(--ink); padding: 20px; margin-top: 18px; }
+.formside .box h3 { font-size: 16px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.formside .box p { margin: 0 0 6px; color: var(--ink); font-size: 15px; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+  font: inherit; color: var(--ink); background: var(--bg); border: 0; border-bottom: 1.5px solid var(--ink); padding: 10px 2px; width: 100%; border-radius: 0;
+}
+input:focus { outline: none; border-bottom-color: var(--accent); box-shadow: 0 1.5px 0 var(--accent); }
+.field .err { color: var(--err); font-size: 13px; min-height: 1em; }
+.field.invalid input { border-bottom-color: var(--err); }
+.consent { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.consent label { font-family: var(--body); font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.submitrow { grid-column: 1 / -1; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.submitrow small { color: var(--muted); }
+.done { grid-column: 1 / -1; border: 2px solid var(--ok); padding: 24px; }
+.done h3 { color: var(--ok); text-transform: uppercase; font-size: 22px; margin-bottom: 8px; }
+.done p { margin: 0 0 8px; }
+
+/* Footer */
+footer { background: var(--ink); color: var(--bg); }
+footer .wrap { padding-block: 40px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; font-size: 14px; }
+footer .logo { color: var(--bg); font-size: 28px; }
+footer .logo span { color: var(--accent); }
+footer p { margin: 6px 0; }
+footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 860px) {
+  .hero .wrap, .sechead, .formgrid, footer .wrap { grid-template-columns: 1fr; }
+  .hero .wrap { gap: 40px; padding-block: 40px; }
+  .steps, .prices { grid-template-columns: 1fr; }
+  .price, .price + .price { padding: 18px 0; border-left: 0; }
+  .price + .price { border-top: 1px solid var(--line); }
+  .step, .step + .step { padding: 18px 0; border-left: 0; }
+  .step + .step { border-top: 1px solid var(--line); }
+  section.block .wrap { padding-block: 48px; }
+}
+@media (max-width: 560px) {
+  form { grid-template-columns: 1fr; }
+  .gift { grid-template-columns: 1fr; }
+  .mainnav { gap: 14px; font-size: 13px; }
+  .card { transform: rotate(-2deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .cardstage:hover .card { transform: rotate(0deg) scale(1.02); }
+}
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Via S. Lucifero, 71, Cagliari •</span>
+    <nav><a href="https://maps.app.goo.gl/zSpKcbV2zamH7Fdp8">Mappa</a><a href="https://exma.earth">exma.earth</a></nav>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="https://exma.earth">E<span>X</span>MA</a>
+    <nav class="mainnav" aria-label="Sezioni della pagina">
+      <a href="#tessera" aria-current="page">La tessera</a>
+      <a href="#prezzi">Prezzi</a>
+      <a href="#vantaggi">Vantaggi</a>
+      <a href="#richiesta">Richiedi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="tessera">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">EXMA Card · La tessera del centro culturale cittadino</div>
+        <h1 style="margin-top:14px">Fai parte dell'<em>X</em></h1>
+        <p class="lead">Una tessera per chi vive l'EXMA: una felpa in omaggio, un evento speciale gratuito, il 20% di sconto sugli ingressi del consorzio e i vantaggi di consorziati e partner. Stampata su plastica riciclata, con un design pensato per durare.</p>
+        <div class="pricehint">Nominativa · Valida fino al 31.12.2027 · Vantaggi da subito · 50 € ridotta · 100 € intera</div>
+        <div class="actions">
+          <a class="cta" href="#richiesta">Richiedi la tessera</a>
+          <a class="cta ghost" href="#vantaggi">Vedi i vantaggi</a>
+        </div>
+        <div class="physical">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Z" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="9" r="2.5" fill="currentColor"/></svg>
+          <span><strong style="color:var(--ink)">Solo tessera fisica.</strong> Non esiste una versione digitale: dopo la richiesta online la ritiri di persona all'EXMA, in Via S. Lucifero 71 a Cagliari, con un documento d'identità.</span>
+        </div>
+      </div>
+      <div class="cardstage">
+        <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
+          <canvas id="speckle" aria-hidden="true"></canvas>
+          <div class="row">
+            <div class="brand">EXMA</div>
+            <div class="tag">Card<br>Cagliari</div>
+          </div>
+          <div class="big-x" aria-hidden="true">X</div>
+          <div class="row" style="align-items:flex-end">
+            <div class="holder">Titolare<b>Nome Cognome</b></div>
+            <div class="year">2027</div>
+          </div>
+        </div>
+        <div class="cardnote">Anteprima indicativa · 85,6 × 54 mm · plastica riciclata</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block support" id="sostegno">
+    <div class="wrap">
+      <div class="sechead">
+        <div><div class="eyebrow">Perché la tessera</div><h2 style="margin-top:10px">Chi la porta, la fa vivere</h2></div>
+        <div class="supporttext">
+          <p>L'EXMA è uno dei luoghi più belli di Cagliari, e da sempre è di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono" e per far parte di questa community.</p>
+          <p><strong>Ogni euro delle tessere va alle attività culturali del centro.</strong> Con la tua tessera sostieni il cartellone, porti nuovi artisti in città e aiuti l'EXMA a tornare il punto di riferimento della Cagliari più viva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="prezzi">
+    <div class="wrap">
+      <div class="sechead">
+        <div><div class="eyebrow">Prezzi</div><h2 style="margin-top:10px">Quanto costa</h2></div>
+        <p>La tessera è nominativa e personale, non si può cedere né prestare. Vale per l'anno solare: la tessera 2027 scade il 31 dicembre 2027. Se la ritiri prima, nel 2026, i vantaggi valgono da subito. Il pagamento si fa all'EXMA quando ritiri la tessera.</p>
+      </div>
+      <div class="prices">
+        <div class="price">
+          <div class="eyebrow">Tariffa ridotta</div>
+          <div class="amount">50 €<small>/ anno</small></div>
+          <p>Studenti e over 65. Al ritiro porta il tesserino universitario o scolastico, oppure un documento che attesti l'età.</p>
+        </div>
+        <div class="price">
+          <div class="eyebrow">Tariffa intera</div>
+          <div class="amount">100 €<small>/ anno</small></div>
+          <p>Per tutti gli altri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="come">
+    <div class="wrap">
+      <div class="sechead">
+        <div><div class="eyebrow">Come funziona</div><h2 style="margin-top:10px">Tre passaggi</h2></div>
+        <p>La richiesta si fa online, la tessera si ritira in sede. La consegna è sempre di persona, perché la tessera è un oggetto fisico pensato per farti tornare all'EXMA.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati in questa pagina. Bastano due minuti.</p></div>
+        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando la tua tessera è pronta per il ritiro.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritirala all'EXMA</h3><p>Passa in Via S. Lucifero 71 con un documento d'identità e paga la tessera. Insieme alla tessera ricevi la tua felpa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="vantaggi">
+    <div class="wrap">
+      <div class="sechead">
+        <div><div class="eyebrow">Vantaggi</div><h2 style="margin-top:10px">Cosa ti dà la tessera</h2></div>
+        <p>Tre vantaggi offerti dal consorzio che gestisce l'EXMA, più i benefici proposti da ogni consorziato e partner. La tessera è nominativa: i vantaggi valgono solo per il titolare, che può dover mostrare un documento insieme alla EXMA Card.</p>
+      </div>
+
+      <div class="eyebrow" style="margin-bottom:12px">Inclusi nella tessera · offerti dal consorzio EXMA</div>
+      <div class="core">
+        <div class="item">
+          <svg viewBox="0 0 96 96" aria-hidden="true">
+            <path d="M34 14 L22 18 L6 34 L16 46 L24 40 L24 84 L72 84 L72 40 L80 46 L90 34 L74 18 L62 14 C60 22 54 26 48 26 C42 26 36 22 34 14 Z" fill="var(--accent)"/>
+            <path d="M40 50 L56 66 M56 50 L40 66" stroke="var(--accent-ink)" stroke-width="5" stroke-linecap="square"/>
+          </svg>
+          <h3>Felpa EXMA in omaggio</h3>
+          <p>La ricevi quando ritiri la tessera. Una per tessera.</p>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 96 96" aria-hidden="true">
+            <path d="M8 26 H88 V40 A8 8 0 0 0 88 56 V70 H8 V56 A8 8 0 0 0 8 40 Z" fill="var(--accent)"/>
+            <path d="M40 40 L56 56 M56 40 L40 56" stroke="var(--accent-ink)" stroke-width="5" stroke-linecap="square"/>
+          </svg>
+          <h3>Un evento speciale gratis</h3>
+          <p>Ingresso gratuito a un evento speciale prodotto dal consorzio durante il 2027.</p>
+        </div>
+        <div class="item">
+          <div class="big">−20%</div>
+          <h3>Sul biglietto d'ingresso</h3>
+          <p>Sconto del 20% sul biglietto di diverse attività culturali prodotte dal consorzio: mostre, spettacoli, concerti.</p>
+        </div>
+      </div>
+
+      <h3 class="subhead">Vantaggi di consorziati e partner</h3>
+      <p class="subintro">Ogni consorziato e ogni partner del progetto propone i benefici che riserva ai titolari della card.</p>
+
+      <div class="filters" role="group" aria-label="Filtra le aziende">
+        <button class="chip" type="button" data-f="tutti" aria-pressed="true">Tutti</button>
+        <button class="chip" type="button" data-f="consorziata" aria-pressed="false">Consorziate</button>
+        <button class="chip" type="button" data-f="partner" aria-pressed="false">Partner</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th style="width:24%">Azienda</th><th style="width:14%">Tipo</th><th style="width:30%">Vantaggio</th><th>Come usarlo</th></tr></thead>
+          <tbody id="perks"></tbody>
+        </table>
+      </div>
+      <p class="demo-note">Prototipo: le aziende e i vantaggi in tabella sono esempi da sostituire con quelli dichiarati da ciascun partner.</p>
+      <p class="joinpartner">Sei un'azienda e vuoi entrare nel network? Scrivi a <strong>info@exma.earth</strong>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="richiesta">
+    <div class="wrap formgrid">
+      <div class="formside">
+        <div class="eyebrow">Richiesta</div>
+        <h2 style="margin:10px 0 18px;font-weight:800;font-stretch:112%;font-size:clamp(30px,4vw,48px);text-transform:uppercase;line-height:1">Richiedi la tua tessera</h2>
+        <p>Compila il modulo. Quando la tessera è pronta ricevi un'email con le indicazioni per il ritiro.</p>
+        <div class="box">
+          <h3>Ritiro in sede</h3>
+          <p>EXMA, Via S. Lucifero 71, 09127 Cagliari</p>
+          <p>Porta un documento d'identità valido.</p>
+          <p>La tessera è intestata a te e la ritiri solo tu.</p>
+          <p style="color:var(--muted)">La tessera non viene spedita e non ha una versione digitale.</p>
+        </div>
+      </div>
+
+      <form id="cardform" novalidate>
+        <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" required value="Giulia"><span class="err"></span></div>
+        <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" autocomplete="family-name" required value="Pisano"><span class="err"></span></div>
+        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required value="1994-05-12"><span class="err"></span></div>
+        <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
+        <div class="field full"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
+        <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
+        <fieldset class="radios">
+          <legend>Tariffa</legend>
+          <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · studenti e over 65</span></label>
+          <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 €</span></label>
+        </fieldset>
+        <div class="consent">
+          <input id="privacy" name="privacy" type="checkbox" required>
+          <label for="privacy">Ho letto l'<a id="privacylink" href="#">informativa privacy della EXMA Card</a> e acconsento al trattamento dei miei dati per il rilascio della tessera.</label>
+        </div>
+        <div class="field full" style="margin-top:-12px"><span class="err" id="privacyerr"></span></div>
+        <div class="submitrow">
+          <button class="cta" type="submit">Invia richiesta</button>
+          <small>Tutti i campi sono obbligatori.</small>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo">E<span>X</span>MA</div>
+      <p style="margin-top:12px">Centro culturale cittadino. Saperi ibridati e connessioni collettive.</p>
+    </div>
+    <div>
+      <p><strong>Progetto EXMA.Earth</strong></p>
+      <p>Via S. Lucifero, 71<br>09127 Cagliari CA</p>
+      <p>info@exma.earth</p>
+    </div>
+    <div>
+      <p><a id="privacylink2" href="#">Privacy policy EXMA Card</a></p>
+      <p><a href="https://exma.earth">exma.earth</a></p>
+      <p><a href="https://www.instagram.com/exma.earth">Instagram</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENUTI MODIFICABILI
+   Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
+   tipo: "consorziata" oppure "partner"
+   ============================================================ */
+const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
+
+const AZIENDE = [
+  { nome: "Sardegna Teatro",       tipo: "consorziata", vantaggio: "Prelazione sui posti per le prime",       come: "Mostra la tessera alla biglietteria" },
+  { nome: "Radio X Social Club",   tipo: "consorziata", vantaggio: "Una consumazione omaggio ogni 10",        come: "Timbro sulla tessera a ogni consumazione" },
+  { nome: "Fuorimargine",          tipo: "consorziata", vantaggio: "Ingresso ridotto ai workshop",            come: "Indica il numero di tessera all'iscrizione" },
+  { nome: "The Net Value",         tipo: "consorziata", vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi", come: "Mostra la tessera all'ingresso del coworking" },
+  { nome: "Libreria di quartiere", tipo: "partner",     vantaggio: "15% di sconto su libri e riviste",        come: "Mostra la tessera in cassa" },
+  { nome: "Bike sharing urbano",   tipo: "partner",     vantaggio: "Primo mese di abbonamento gratuito",      come: "Codice consegnato al ritiro della tessera" }
+];
+
+/* ---------- da qui in giù il codice della pagina ---------- */
+const tbody = document.getElementById("perks");
+function renderPerks(filtro) {
+  tbody.innerHTML = "";
+  AZIENDE.filter(a => filtro === "tutti" || a.tipo === filtro).forEach(a => {
+    const tr = document.createElement("tr");
+    const cells = [
+      ["name", a.nome],
+      ["", null],
+      ["perk", a.vantaggio],
+      ["how", a.come]
+    ];
+    cells.forEach(([cls, txt], i) => {
+      const td = document.createElement("td");
+      if (cls) td.className = cls;
+      if (i === 1) {
+        const p = document.createElement("span");
+        p.className = "pill " + (a.tipo === "consorziata" ? "cons" : "part");
+        p.textContent = a.tipo === "consorziata" ? "Consorziata" : "Partner";
+        td.appendChild(p);
+      } else td.textContent = txt;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+renderPerks("tutti");
+document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === b)));
+  renderPerks(b.dataset.f);
+}));
+
+["privacylink", "privacylink2"].forEach(id => { document.getElementById(id).href = PRIVACY_URL; });
+
+/* Effetto "plastica riciclata": puntini colorati sulla tessera */
+(function speckle() {
+  const c = document.getElementById("speckle");
+  const r = c.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  c.width = Math.max(1, r.width * dpr); c.height = Math.max(1, r.height * dpr);
+  const ctx = c.getContext("2d");
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const colors = ["rgba(255,255,255,.55)", "rgba(10,20,90,.55)", "rgba(120,200,255,.6)", "rgba(255,210,80,.5)"];
+  const n = Math.round(c.width * c.height / 900);
+  for (let i = 0; i < n; i++) {
+    ctx.fillStyle = colors[Math.floor(rnd() * colors.length)];
+    const s = (rnd() * 2.2 + .6) * dpr;
+    ctx.fillRect(rnd() * c.width, rnd() * c.height, s, s * (rnd() + .5));
+  }
+})();
+
+/* Modulo: controlli e conferma (prototipo, nessun invio reale) */
+const form = document.getElementById("cardform");
+function setErr(input, msg) {
+  const f = input.closest(".field");
+  if (f) { f.classList.toggle("invalid", !!msg); f.querySelector(".err").textContent = msg || ""; }
+}
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  let ok = true;
+  const msgs = {
+    nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
+    indirizzo: "Inserisci l'indirizzo completo.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
+    telefono: "Inserisci un numero di telefono valido."
+  };
+  Object.keys(msgs).forEach(id => {
+    const el = document.getElementById(id);
+    let bad = !el.value.trim();
+    if (id === "email" && !bad) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+    if (id === "telefono" && !bad) bad = el.value.replace(/[^\d]/g, "").length < 8;
+    if (id === "nascita" && !bad) bad = new Date(el.value) > new Date();
+    setErr(el, bad ? msgs[id] : "");
+    if (bad) ok = false;
+  });
+  const priv = document.getElementById("privacy");
+  document.getElementById("privacyerr").textContent = priv.checked ? "" : "Per richiedere la tessera serve il consenso al trattamento dei dati.";
+  if (!priv.checked) ok = false;
+  if (!ok) { form.querySelector(".invalid input, #privacy:not(:checked)")?.focus(); return; }
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  form.innerHTML = "";
+  const d = document.createElement("div");
+  d.className = "done";
+  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera è pronta la ritiri all'EXMA, Via S. Lucifero 71, Cagliari, con un documento d'identità.</p><p style='color:var(--muted);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati.</p>";
+  const tariffa = document.getElementById("t-ridotta").checked ? "ridotta (50 €)" : "intera (100 €)";
+  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card sarà pronta. Tariffa scelta: " + tariffa + ", da pagare al ritiro.";
+  form.appendChild(d);
+});
+</script>
