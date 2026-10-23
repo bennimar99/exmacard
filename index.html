@@ -131,6 +131,7 @@ section.block .wrap { padding-block: 88px; }
 .prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
+.price h3 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1; }
 .price .amount { color: var(--blue); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gray-500); margin-left: 10px; }
 .price p { margin: 0; color: var(--gray-600); max-width: 30em; }
@@ -340,12 +341,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       </div>
       <div class="prices">
         <div class="price">
-          <div class="eyebrow">Ridotto</div>
+          <h3>Ridotto</h3>
           <div class="amount">50 €<small>/ anno</small></div>
           <p>Under 35. Al ritiro porta un documento d'identità che attesti l'età.</p>
         </div>
         <div class="price">
-          <div class="eyebrow">Intero</div>
+          <h3>Intero</h3>
           <div class="amount">100 €<small>/ anno</small></div>
           <p>Per gli over 35.</p>
         </div>
