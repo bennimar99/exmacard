@@ -13,6 +13,8 @@
   --paper: #FFFFFF;
   --bone: #F4F1E9;
   --blue: #2E7FF8;
+  --blue-x: #5469F5;   /* azzurro della X sul sito */
+  --panel: #DEDEDE;    /* grigio dei pannelli sul sito */
   --blue-700: #1763E0;
   --blue-100: #E4EEFE;
   --gray-200: #E6E6E6;
@@ -103,6 +105,7 @@ section.block .wrap { padding-block: 88px; }
 .sechead { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 48px; align-items: end; }
 .xside { display: block; width: 150px; height: 150px; color: var(--blue); margin-bottom: 36px; }
 .sechead-x { margin-bottom: 40px; }
+.sechead div > h2:first-child { margin-top: 0; }
 .sechead h2 { font-size: clamp(34px, 4.6vw, 64px); margin-top: 16px; }
 .sechead p { margin: 0; max-width: 40em; color: var(--gray-600); }
 
@@ -119,15 +122,15 @@ section.block .wrap { padding-block: 88px; }
 .prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
-.price .amount { font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
+.price .amount { color: var(--blue-x); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gray-500); margin-left: 10px; }
 .price p { margin: 0; color: var(--gray-600); max-width: 30em; }
 
 /* Come funziona */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); }
-.step { padding: 28px 28px 8px 0; min-width: 0; }
-.step + .step { padding-left: 28px; border-left: 1px solid var(--ink); }
-.step .n { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--blue); }
+.step { padding: 32px 28px 12px; min-width: 0; text-align: center; }
+.step + .step { border-left: 1px solid var(--ink); }
+.step .n { font-family: var(--font-display); font-size: clamp(64px, 8vw, 112px); font-weight: 500; line-height: 1; letter-spacing: -0.02em; color: var(--blue-x); }
 .step h3 { font-size: 28px; margin: 18px 0 12px; letter-spacing: -0.02em; }
 .step p { margin: 0; color: var(--gray-600); }
 
@@ -139,24 +142,16 @@ section.block .wrap { padding-block: 88px; }
 .core .item .big { font-weight: 500; font-size: 64px; line-height: .9; letter-spacing: -0.02em; color: var(--blue); }
 .core .item h3 { font-size: 28px; letter-spacing: -0.02em; }
 .core .item p { margin: 0; color: var(--gray-600); }
-.subhead { font-size: 32px; letter-spacing: -0.02em; margin: 0 0 8px; }
-.subintro { margin: 0 0 24px; color: var(--gray-600); max-width: 46em; }
-.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.chip { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; padding: 9px 16px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease); }
-.chip:hover { background: var(--blue-100); }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.tablewrap { overflow-x: auto; border-top: 1.5px solid var(--ink); }
-table { width: 100%; border-collapse: collapse; min-width: 640px; }
-th { text-align: left; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; color: var(--gray-600); font-weight: 500; padding: 14px 14px 14px 0; border-bottom: 1px solid var(--ink); }
-td { padding: 20px 14px 20px 0; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
-td.name { font-weight: 500; font-size: 18px; letter-spacing: -0.02em; }
-td.perk { font-weight: 600; }
-td.how { color: var(--gray-600); font-size: 15px; }
-.pill { display: inline-block; font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: 0; padding: 4px 8px; border: 1px solid currentColor; white-space: nowrap; }
-.pill.cons { color: var(--blue); }
-.pill.part { color: var(--gray-600); }
-.demo-note { margin-top: 16px; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; color: var(--gray-500); }
-.joinpartner { margin-top: 24px; font-size: 15px; }
+.subintro { margin: 0; color: var(--ink); max-width: 34em; }
+.panel { background: var(--panel); border-radius: 16px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.panel-l { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.panel h2 { font-size: clamp(34px, 4.6vw, 64px); }
+.xpanel { display: block; width: min(100%, 320px); height: auto; aspect-ratio: 1; color: var(--blue-x); margin-top: 24px; }
+.panel-r { min-width: 0; padding-top: 8px; }
+.perk + .perk { margin-top: 40px; }
+.perk h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; margin-bottom: 12px; }
+.perk p { margin: 0; max-width: 34em; }
+.joinpartner { margin: 56px 0 0; font-size: 16px; }
 
 /* Richiesta */
 .formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
@@ -210,6 +205,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   .price + .price, .step + .step, .core .item + .item { border-top: 1px solid var(--ink); }
   section.block .wrap { padding-block: 56px; }
   .formgrid { gap: 40px; }
+  .panel { grid-template-columns: 1fr; gap: 36px; }
+  .xpanel { width: 180px; }
 }
 @media (max-width: 560px) {
   form { grid-template-columns: 1fr; }
@@ -310,17 +307,17 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="prezzi">
     <div class="wrap">
       <div class="sechead">
-        <div><div class="eyebrow"><svg class="xm" aria-hidden="true"><use href="#xmark"/></svg>Prezzi</div><h2>Quanto costa</h2></div>
+        <div><h2>Quanto costa</h2></div>
         <p>La tessera è nominativa e personale, non si può cedere né prestare. È valida per tutto l'anno solare: la tessera 2027 scade il 31 dicembre 2027. Se la ritiri prima, nel 2026, i vantaggi valgono da subito. Il pagamento si fa all'EXMA quando ritiri la tessera.</p>
       </div>
       <div class="prices">
         <div class="price">
-          <div class="eyebrow">Tariffa ridotta</div>
+          <div class="eyebrow">Ridotto</div>
           <div class="amount">50 €<small>/ anno</small></div>
           <p>Under 35. Al ritiro porta un documento d'identità che attesti l'età.</p>
         </div>
         <div class="price">
-          <div class="eyebrow">Tariffa intera</div>
+          <div class="eyebrow">Intero</div>
           <div class="amount">100 €<small>/ anno</small></div>
           <p>Per gli over 35.</p>
         </div>
@@ -369,15 +366,17 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 
   <section class="block" id="partner">
     <div class="wrap">
-      <h2 class="subhead">Sconti offerti dai nostri partner</h2>
-      <p class="subintro">EXMA.earth è il progetto dell'impresa consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri gli sconti che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento.</p>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th style="width:30%">Partner</th><th>Sconto</th></tr></thead>
-          <tbody id="perks"></tbody>
-        </table>
+      <div class="panel">
+        <div class="panel-l">
+          <h2>Sconti offerti dai nostri partner</h2>
+          <p class="subintro">EXMA.earth è il progetto dell'impresa consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri gli sconti che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento.</p>
+          <svg class="xpanel" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg>
+        </div>
+        <div class="panel-r">
+          <div id="perks"></div>
+          <p class="joinpartner">Sei un'azienda e vuoi entrare nel network? Scrivi a <strong>info@exma.earth</strong>.</p>
+        </div>
       </div>
-      <p class="joinpartner">Sei un'azienda e vuoi entrare nel network? Scrivi a <strong>info@exma.earth</strong>.</p>
     </div>
   </section>
 
@@ -464,16 +463,14 @@ const AZIENDE = [
 ];
 
 /* ---------- da qui in giù il codice della pagina ---------- */
-const tbody = document.getElementById("perks");
+const lista = document.getElementById("perks");
 AZIENDE.forEach(a => {
-  const tr = document.createElement("tr");
-  [["name", a.nome], ["perk", a.vantaggio]].forEach(([cls, txt]) => {
-    const td = document.createElement("td");
-    td.className = cls;
-    td.textContent = txt;
-    tr.appendChild(td);
-  });
-  tbody.appendChild(tr);
+  const d = document.createElement("div");
+  d.className = "perk";
+  const h = document.createElement("h3"); h.textContent = a.nome;
+  const p = document.createElement("p"); p.textContent = a.vantaggio;
+  d.append(h, p);
+  lista.appendChild(d);
 });
 
 /* Menu a tendina della toolbar */
