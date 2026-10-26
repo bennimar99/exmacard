@@ -209,6 +209,7 @@ input:focus { outline: none; box-shadow: none; border-bottom-color: var(--blue);
 select { font: inherit; color: var(--ink); background: var(--paper); border: 0; border-bottom: 1.5px solid var(--ink); border-radius: 0; padding: 11px 2px; width: 100%; }
 select:focus { outline: none; border-bottom-color: var(--blue); box-shadow: 0 1.5px 0 var(--blue); }
 .field.invalid select { border-bottom-color: var(--err); }
+.opt { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--gray-500); }
 .hint { color: var(--gray-500); font-size: 13px; }
 .reqnote { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--gray-500); }
 .field .err { color: var(--err); font-size: 13px; min-height: 1em; }
@@ -322,7 +323,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="tab" href="#prezzi">Prezzi</a>
           <a class="tab" href="#richiesta">Richiedi</a>
         </nav>
-        <p class="lead">La card per chi vive l'EXMA: biglietto ridotto sulle mostre EXMA, vantaggi presso i nostri partner e la felpa EXMA inclusa.</p>
+        <p class="lead">La card per chi vive l'EXMA: riduzioni agli eventi EXMA, vantaggi con i nostri partner e in omaggio la felpa EXMA serigrafata.</p>
         <div class="actions">
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
@@ -354,20 +355,20 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <div class="sechead">
         <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Cos'è l'EXMA Card?</h2></div>
         <div class="supporttext">
-          <p>L'EXMA è di chi lo attraversa: chi viene ai concerti, alle mostre, agli spettacoli, chi ci passa una sera con gli amici. La EXMA Card è il modo per dire "io ci sono".</p>
-          <p>Il ricavato della EXMA Card contribuisce a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
+          <p>Il progetto EXMA.earth prevede un fitto programma artistico dedicato ai linguaggi della contemporaneità, ai percorsi di valorizzazione culturale del tessuto urbano, con performance, concerti, laboratori, spazi di incubazione, tavoli di co-progettazione e azioni di empowerment delle comunità.</p>
+          <p>EXMA Card è uno strumento per contribuire a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
         </div>
       </div>
       <div class="core">
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
-          <h3>Una felpa EXMA inclusa</h3>
+          <h3>Una felpa EXMA serigrafata in omaggio</h3>
           <p>Ritirala assieme alla tessera.</p>
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /></svg>
-          <h3>Biglietto ridotto su tutte le mostre EXMA</h3>
-          <p>Il biglietto ridotto vale su tutte le mostre organizzate direttamente da EXMA (CLOE società consortile). Non si applica a eventi di terzi o con biglietteria propria dei partner. Altre iniziative dedicate ai titolari ti saranno comunicate via email.</p>
+          <h3>Biglietto ridotto per gli eventi EXMA</h3>
+          <p>Il biglietto ridotto vale sugli eventi organizzati direttamente da EXMA (CLOE Scarl). Non si applica a eventi di terzi o con biglietteria propria dei partner. Altre iniziative dedicate ai titolari ti saranno comunicate via email.</p>
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></svg>
@@ -457,6 +458,10 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><small class="hint">Serve a verificare la tariffa.</small><span class="err"></span></div>
         <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
+        <div class="field"><label for="cf">Codice Fiscale</label><input id="cf" name="cf" type="text" autocomplete="off" required maxlength="16" style="text-transform:uppercase"><span class="err"></span></div>
+        <div class="field"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
+        <div class="field"><label for="piva">Partita IVA <span class="opt">(solo aziende)</span></label><input id="piva" name="piva" type="text" inputmode="numeric" autocomplete="off" maxlength="11"><span class="err"></span></div>
+        <div class="field"><label for="sdi">Codice Univoco <span class="opt">(solo aziende)</span></label><input id="sdi" name="sdi" type="text" autocomplete="off" maxlength="7" style="text-transform:uppercase"><span class="err"></span></div>
         <div class="field full"><label for="taglia">Taglia felpa</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><optgroup label="Felpa adulto"><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></optgroup><optgroup label="Felpa KIDS"><option>Kids 3-4 anni</option><option>Kids 5-6 anni</option><option>Kids 7-8 anni</option><option>Kids 9-10 anni</option><option>Kids 11-12 anni</option><option>Kids 13-14 anni</option></optgroup></select><small class="hint">Una sola felpa per tessera: adulto o kids.</small><span class="err"></span></div>
         <fieldset class="radios">
           <legend>Tariffa</legend>
@@ -480,7 +485,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <label for="termini">Accetto i <a id="terminilink" href="#">Termini e Condizioni Generali della EXMA Card</a>.</label>
         </div>
         <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
-        <p class="reqnote">Tutti i campi sono obbligatori.</p>
+        <p class="reqnote">Tutti i campi sono obbligatori, tranne Partita IVA e Codice Univoco, da compilare solo se richiedi la tessera come azienda.</p>
         <div class="submitrow">
           <button class="btn accent" id="submitbtn" type="submit">Invia richiesta e paga</button>
         </div>
@@ -602,7 +607,7 @@ form.addEventListener("submit", e => {
   let ok = true;
   const msgs = {
     nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
-    taglia: "Scegli la taglia della felpa.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
+    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", taglia: "Scegli la taglia della felpa.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
     telefono: "Inserisci un numero di telefono valido."
   };
   Object.keys(msgs).forEach(id => {
@@ -611,7 +616,15 @@ form.addEventListener("submit", e => {
     if (id === "email" && !bad) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
     if (id === "telefono" && !bad) bad = el.value.replace(/[^\d]/g, "").length < 8;
     if (id === "nascita" && !bad) bad = new Date(el.value) > new Date();
+    if (id === "cf" && !bad) bad = !/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i.test(el.value.trim());
     setErr(el, bad ? msgs[id] : "");
+    if (bad) ok = false;
+  });
+  const opz = { piva: [/^\d{11}$/, "La Partita IVA ha 11 cifre."], sdi: [/^[A-Z0-9]{6,7}$/i, "Il Codice Univoco ha 6 o 7 caratteri."] };
+  Object.keys(opz).forEach(id => {
+    const el = document.getElementById(id), v = el.value.trim();
+    const bad = v !== "" && !opz[id][0].test(v);
+    setErr(el, bad ? opz[id][1] : "");
     if (bad) ok = false;
   });
   const priv = document.getElementById("privacy");
