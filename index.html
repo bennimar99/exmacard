@@ -102,6 +102,13 @@ strong { font-weight: 600; }
 .card .holder b { display: block; margin-top: 4px; font-family: var(--font-sans); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; color: var(--paper); }
 .card .year { font-weight: 500; font-size: 34px; line-height: 1; letter-spacing: -0.02em; }
 
+/* Felpa */
+.felpa-hero { width: min(100%, 440px); margin-top: 40px; border-radius: 16px; }
+.felpa { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
+.felpa img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--paper); padding: 28px; }
+.felpa h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; margin-bottom: 14px; }
+.felpa p { margin: 0; color: rgba(255,255,255,.75); max-width: 28em; }
+
 /* Foto a tutta larghezza */
 .photo { position: relative; height: clamp(260px, 42vw, 520px); overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--ink); }
 .photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95); transition: transform .36s var(--ease); }
@@ -229,6 +236,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   section.block .wrap { padding-block: 56px; }
   .formgrid { gap: 40px; }
   .panel { grid-template-columns: 1fr; gap: 36px; }
+  .felpa { grid-template-columns: 1fr; gap: 28px; margin-top: 40px; }
   .xpanel { width: 180px; }
 }
 @media (max-width: 560px) {
@@ -317,6 +325,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
             <div class="year">2027</div>
           </div>
         </div>
+        <img class="felpa-hero" src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
       </div>
     </div>
   </section>
@@ -392,6 +401,13 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></svg>
           <h3>Vantaggi dedicati presso i nostri partner</h3>
           <p>Scopri quali sono qui sotto.</p>
+        </div>
+      </div>
+      <div class="felpa">
+        <img src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
+        <div>
+          <h3>La felpa EXMA, inclusa nella tessera</h3>
+          <p>La felpa EXMA, in omaggio con ogni tessera. Scegli la taglia nel modulo e ritirala insieme alla tessera.</p>
         </div>
       </div>
     </div>
