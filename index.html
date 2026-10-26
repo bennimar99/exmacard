@@ -106,6 +106,8 @@ strong { font-weight: 600; }
 .felpa-hero { width: min(100%, 440px); margin-top: 40px; border-radius: 16px; }
 .felpa { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
 .felpa img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--paper); padding: 28px; }
+.felpa-kids { margin-top: 24px; }
+.fineprint { margin: 28px 0 0; font-size: 13px; color: rgba(255,255,255,.6); max-width: 46em; }
 .felpa h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; margin-bottom: 14px; }
 .felpa p { margin: 0; color: rgba(255,255,255,.75); max-width: 28em; }
 
@@ -163,6 +165,10 @@ section.block .wrap { padding-block: 88px; }
 .dark .sechead p { color: var(--paper); font-size: 20px; margin: 0 0 1em; max-width: 36em; }
 .dark .sechead p:last-child { margin-bottom: 0; }
 .dark .core { border-color: rgba(255,255,255,.35); margin-bottom: 0; }
+.dark .prices { border-top-color: rgba(255,255,255,.35); }
+.dark .price + .price { border-left-color: rgba(255,255,255,.35); }
+.dark .price p { color: rgba(255,255,255,.75); }
+@media (max-width: 860px) { .dark .price + .price { border-top-color: rgba(255,255,255,.35); } }
 .dark .core .item + .item { border-left-color: rgba(255,255,255,.35); }
 .dark .core .item p { color: rgba(255,255,255,.75); }
 @media (max-width: 860px) { .dark .core .item + .item { border-top-color: rgba(255,255,255,.35); } }
@@ -374,6 +380,14 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <p>La felpa EXMA, in omaggio con ogni tessera. Scegli la taglia nel modulo e ritirala insieme alla tessera.</p>
         </div>
       </div>
+      <div class="felpa felpa-kids">
+        <img src="assets/felpa-kids.png" alt="Felpa EXMA KIDS blu con la grafica rossa, vista davanti e dietro" loading="lazy">
+        <div>
+          <h3>Puoi anche scegliere la felpa KIDS!</h3>
+          <p>In alternativa alla felpa adulto, puoi scegliere la versione kids, con taglie dai 3 ai 14 anni.</p>
+        </div>
+      </div>
+      <p class="fineprint">Felpe in omaggio fino ad esaurimento scorte. In caso non ci sia la tua taglia, la ordineremo e ti avviseremo non appena sarà disponibile per il ritiro.</p>
     </div>
   </section>
 
@@ -384,7 +398,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     </div>
   </section>
 
-  <section class="block" id="prezzi">
+  <section class="block dark" id="prezzi">
     <div class="wrap">
       <div class="sechead">
         <div><h2>Quanto costa</h2></div>
@@ -441,7 +455,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><small class="hint">Serve a verificare la tariffa.</small><span class="err"></span></div>
         <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
-        <div class="field full"><label for="taglia">Taglia felpa</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select><span class="err"></span></div>
+        <div class="field full"><label for="taglia">Taglia felpa</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><optgroup label="Felpa adulto"><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></optgroup><optgroup label="Felpa KIDS"><option>Kids 3-4 anni</option><option>Kids 5-6 anni</option><option>Kids 7-8 anni</option><option>Kids 9-10 anni</option><option>Kids 11-12 anni</option><option>Kids 13-14 anni</option></optgroup></select><small class="hint">Una sola felpa per tessera: adulto o kids.</small><span class="err"></span></div>
         <fieldset class="radios">
           <legend>Tariffa</legend>
           <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
@@ -523,7 +537,7 @@ const GRUPPI = [
   { id: "team",  stile: "g", titolo: "Vantaggi offerti dal team EXMA.earth",
     descrizione: "EXMA.earth è il progetto della società consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri i vantaggi che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento." },
   { id: "altri", stile: "w", titolo: "Vantaggi offerti dal network di EXMA",
-    descrizione: "EXMA.earth è un progetto per tutta la città. Grazie ai nostri partner, xxx" }
+    descrizione: "L'EXMA è di tutta la città. Collaboriamo con le principali realtà culturali e artistiche del territorio, che offrono a tutti coloro che hanno l'EXMA Card dei vantaggi esclusivi." }
 ];
 GRUPPI.forEach(g => {
   const voci = AZIENDE.filter(a => a.gruppo === g.id);
