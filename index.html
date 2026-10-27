@@ -135,7 +135,8 @@ section.block .wrap { padding-block: 88px; }
 .prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
-.prices.one { grid-template-columns: 1fr; }
+.prices.one { grid-template-columns: 1fr 1fr; align-items: center; gap: 32px; }
+.dark .price p.pricenote { color: var(--paper); font-size: 20px; max-width: 28em; margin: 0; }
 .price h3 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1; }
 .price .amount { color: var(--blue); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gray-500); margin-left: 10px; }
@@ -402,14 +403,14 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Quanto costa</h2></div>
-        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si fa in sede, al ritiro, con POS o contanti.</p>
       </div>
       <div class="prices one">
         <div class="price">
-          <h3>Tessera EXMA Card</h3>
+          <h3>EXMA Card</h3>
           <div class="amount">50 €</div>
           <p>Al ritiro porta un documento d'identità valido.</p>
         </div>
+        <p class="pricenote">La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si fa in sede, al ritiro, con POS o contanti.</p>
       </div>
     </div>
   </section>
