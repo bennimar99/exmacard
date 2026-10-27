@@ -328,7 +328,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
         </div>
-        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità.</p>
+        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta online la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità, e paghi in sede.</p>
       </div>
       <div class="cardstage">
         <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
@@ -405,13 +405,13 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Quanto costa</h2></div>
-        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Puoi pagare online al momento della richiesta oppure in contanti quando ritiri la tessera e la felpa.</p>
+        <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si fa in sede, al ritiro, con POS o contanti.</p>
       </div>
       <div class="prices">
         <div class="price">
           <h3>Ridotto</h3>
           <div class="amount">50 €</div>
-          <p>Under 35.</p>
+          <p>Fino a 34 anni compiuti. Al ritiro porta un documento d'identità che attesti l'età. Se l'età non corrisponde alla tariffa scelta, la differenza va versata al ritiro.</p>
         </div>
         <div class="price">
           <h3>Intero</h3>
@@ -426,12 +426,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap">
       <div class="sechead">
         <div><h2>Tre passaggi</h2></div>
-        <p>Richiedi la tua EXMA Card online, scegli se pagare subito con Stripe o in contanti al ritiro, e ritirala in EXMA (Via San Lucifero 71, Cagliari).</p>
+        <p>Richiedi la tua EXMA Card online e ritirala in EXMA (Via San Lucifero 71, Cagliari), dove la paghi.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati e scegli come pagare: online o in contanti al ritiro. Bastano pochi minuti.</p></div>
-        <div class="step"><div class="n">02</div><h3>Ricevi la mail</h3><p>Quando la tessera e la felpa sono pronte per il ritiro, ti mandiamo una mail.</p></div>
-        <div class="step"><div class="n">03</div><h3>Ritirala in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità. Se vuoi puoi pagare in contanti quando passi a ritirare la tessera e la felpa. Insieme alla tessera ricevi la tua felpa.</p></div>
+        <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati e invia la richiesta. Bastano pochi minuti.</p></div>
+        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando tessera e felpa sono pronte per il ritiro.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritira e paga in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità e paga con POS o contanti. Insieme alla tessera ricevi la tua felpa.</p></div>
       </div>
     </div>
   </section>
@@ -446,7 +446,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
           <p>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
           <p>Porta un documento d'identità valido.</p>
-          <p>Se scegli di pagare in contanti, paghi al ritiro.</p>
+          <p>Il ritiro va fatto entro 30 giorni dall'email che ti avvisa che la tessera è pronta: dopo questa data la richiesta scade.</p>
           <p>La tessera è intestata a te e la ritiri solo tu.</p>
           <p style="color:var(--gray-600)">La tessera non viene spedita e non ha una versione digitale.</p>
         </div>
@@ -458,6 +458,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><small class="hint">Serve a verificare la tariffa.</small><span class="err"></span></div>
         <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
+        <!-- TODO: decidere se tenerli, vedi consulente privacy -->
         <div class="field"><label for="cf">Codice Fiscale</label><input id="cf" name="cf" type="text" autocomplete="off" required maxlength="16" style="text-transform:uppercase"><span class="err"></span></div>
         <div class="field"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
         <div class="field"><label for="piva">Partita IVA <span class="opt">(solo aziende)</span></label><input id="piva" name="piva" type="text" inputmode="numeric" autocomplete="off" maxlength="11"><span class="err"></span></div>
@@ -467,11 +468,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <legend>Tariffa</legend>
           <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
           <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 € · Over 35</span></label>
-        </fieldset>
-        <fieldset class="radios">
-          <legend>Come vuoi pagare</legend>
-          <label class="radio"><input type="radio" name="pagamento" id="p-online" value="online" checked><span>Online, subito</span></label>
-          <label class="radio"><input type="radio" name="pagamento" id="p-contanti" value="contanti"><span>In contanti al ritiro</span></label>
         </fieldset>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
@@ -485,9 +481,9 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <label for="termini">Accetto i <a id="terminilink" href="#">Termini e Condizioni Generali della EXMA Card</a>.</label>
         </div>
         <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
-        <p class="reqnote">Tutti i campi sono obbligatori, tranne Partita IVA e Codice Univoco, da compilare solo se richiedi la tessera come azienda.</p>
+        <p class="reqnote">Tutti i campi sono obbligatori, eccetto Partita IVA e Codice Univoco.</p>
         <div class="submitrow">
-          <button class="btn accent" id="submitbtn" type="submit">Invia richiesta e paga</button>
+          <button class="btn accent" id="submitbtn" type="submit">Invia richiesta</button>
         </div>
       </form>
     </div>
@@ -526,7 +522,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
    Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
    ============================================================ */
 const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
-const STRIPE_LINK = { ridotta: "[LINK_STRIPE_50]", intera: "[LINK_STRIPE_100]" }; // da sostituire con i link di pagamento Stripe
+const INVIA_URL = ""; // TODO: indirizzo a cui inviare i dati del modulo (es. Apps Script); vuoto = nessun invio
 const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da definire)
 
 const AZIENDE = [
@@ -595,9 +591,6 @@ document.getElementById("terminilink").href = TERMINI_URL;
 /* Modulo: controlli e conferma (prototipo, nessun invio reale) */
 const form = document.getElementById("cardform");
 const submitBtn = document.getElementById("submitbtn");
-form.querySelectorAll('input[name="pagamento"]').forEach(r => r.addEventListener("change", () => {
-  submitBtn.textContent = document.getElementById("p-contanti").checked ? "Invia richiesta" : "Invia richiesta e paga";
-}));
 function setErr(input, msg) {
   const f = input.closest(".field");
   if (f) { f.classList.toggle("invalid", !!msg); f.querySelector(".err").textContent = msg || ""; }
@@ -636,20 +629,39 @@ form.addEventListener("submit", e => {
   if (!ok) { form.querySelector(".invalid input, #privacy:not(:checked), #termini:not(:checked)")?.focus(); return; }
 
   const nome = document.getElementById("nome").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const ridotta = document.getElementById("t-ridotta").checked;
-  const contanti = document.getElementById("p-contanti").checked;
-  const link = STRIPE_LINK[ridotta ? "ridotta" : "intera"];
-  if (!contanti && /^https:\/\//.test(link)) { window.location.href = link; return; }
 
-  /* Link Stripe non ancora configurato: mostra la conferma di prova */
-  form.innerHTML = "";
-  const d = document.createElement("div");
-  d.className = "done";
-  d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Quando la tessera e la felpa sono pronte, ti mandiamo una mail. Le ritiri in EXMA, Via San Lucifero 71, 09127 Cagliari, con un documento d'identità.</p><p style='color:var(--gray-500);font-size:14px'>Prototipo: i dati non sono stati inviati né salvati e il pagamento Stripe non è ancora collegato.</p>";
-  const tariffa = ridotta ? "ridotta (50 €)" : "intera (100 €)";
-  d.querySelector("p").textContent = "Grazie " + nome + ". Ti scriveremo a " + email + " quando la tua EXMA Card e la felpa saranno pronte. Tariffa scelta: " + tariffa + (contanti ? ", da pagare in contanti al ritiro." : ".");
-  form.appendChild(d);
+  /* Numero ordine: EX- + AAAAMMGG + - + 4 cifre casuali */
+  const oggi = new Date();
+  const aaaammgg = oggi.getFullYear() + String(oggi.getMonth() + 1).padStart(2, "0") + String(oggi.getDate()).padStart(2, "0");
+  const ordine = "EX-" + aaaammgg + "-" + String(Math.floor(Math.random() * 10000)).padStart(4, "0");
+  const dati = Object.fromEntries(new FormData(form));
+  dati.ordine = ordine;
+
+  function conferma(inviato) {
+    form.innerHTML = "";
+    const d = document.createElement("div");
+    d.className = "done";
+    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando tessera e felpa sono pronte per il ritiro. Il pagamento si fa in sede.</p>";
+    d.querySelector("p").textContent = "Il tuo numero ordine è " + ordine + ".";
+    if (!inviato) {
+      const n = document.createElement("p");
+      n.style.cssText = "color:var(--gray-500);font-size:14px";
+      n.textContent = "Prototipo: i dati non sono stati inviati né salvati.";
+      d.appendChild(n);
+    }
+    form.appendChild(d);
+  }
+
+  if (!INVIA_URL) { conferma(false); return; }
+  submitBtn.disabled = true;
+  fetch(INVIA_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dati) })
+    .then(r => { if (!r.ok) throw new Error(r.status); conferma(true); })
+    .catch(() => {
+      submitBtn.disabled = false;
+      let e = document.getElementById("senderr");
+      if (!e) { e = document.createElement("p"); e.id = "senderr"; e.className = "reqnote"; e.style.color = "var(--err)"; form.querySelector(".submitrow").before(e); }
+      e.textContent = "Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.";
+    });
 });
 </script>
 </body>
