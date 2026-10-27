@@ -91,23 +91,19 @@ strong { font-weight: 600; }
 .physical strong { color: var(--ink); }
 
 /* Tessera: nera, wordmark bianco, X azzurra */
-.cardstage { display: grid; place-items: center; min-width: 0; }
-.card { width: min(100%, 440px); border-radius: 16px; aspect-ratio: 85.6 / 54; position: relative; overflow: hidden; background: var(--ink); color: var(--paper); padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-4deg); box-shadow: 0 12px 40px rgba(11,11,11,.12), 0 30px 60px -30px rgba(11,11,11,.45); }
-.card > * { position: relative; }
-.card .row { display: flex; justify-content: space-between; align-items: flex-start; }
-.card .brand img { height: 26px; width: auto; }
-.card .tag { font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0; text-align: right; color: var(--blue); line-height: 1.5; }
-.card .bigx { position: absolute; right: -28px; bottom: -34px; width: 190px; height: 190px; color: var(--blue); }
-.card .holder { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0; color: rgba(255,255,255,.7); }
-.card .holder b { display: block; margin-top: 4px; font-family: var(--font-sans); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; color: var(--paper); }
-.card .year { font-weight: 500; font-size: 34px; line-height: 1; letter-spacing: -0.02em; }
+.cardstage { display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; min-width: 0; }
+.cards { width: min(100%, 440px); }
+.card { container-type: inline-size; border-radius: 16px; aspect-ratio: 85.6 / 54; position: relative; overflow: hidden; display: flex; flex-direction: column; transform: rotate(-4deg); box-shadow: 0 12px 40px rgba(11,11,11,.10); }
+.card.front { background: #1B1B1B; align-items: center; justify-content: center; }
+.card.front img { width: 72%; height: auto; }
 
-/* Felpa */
-.felpa-hero { width: min(100%, 440px); margin-top: 40px; border-radius: 16px; }
+/* Maglietta */
+.felpa-hero { width: min(100%, 440px); margin-top: 40px; border-radius: 16px; justify-self: center; }
 .felpa { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
-.felpa img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--paper); padding: 28px; }
+
 .felpa-kids { margin-top: 24px; }
 .fineprint { margin: 28px 0 0; font-size: 13px; color: rgba(255,255,255,.6); max-width: 46em; }
+.felpa img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--paper); padding: 28px; }
 .felpa h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; margin-bottom: 14px; }
 .felpa p { margin: 0; color: rgba(255,255,255,.75); max-width: 28em; }
 
@@ -139,6 +135,7 @@ section.block .wrap { padding-block: 88px; }
 .prices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
+.prices.one { grid-template-columns: 1fr; }
 .price h3 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1; }
 .price .amount { color: var(--blue); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gray-500); margin-left: 10px; }
@@ -153,9 +150,12 @@ section.block .wrap { padding-block: 88px; }
 .step p { margin: 0; color: var(--gray-600); }
 
 /* Vantaggi */
-.core { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); margin-bottom: 64px; }
+.core { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); margin-bottom: 64px; }
 .core .item { padding: 36px 28px; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.core .item { grid-column: span 2; }
+.core .item:nth-child(n+4) { grid-column: span 3; border-top: 1px solid var(--ink); }
 .core .item + .item { border-left: 1px solid var(--ink); }
+.core .item:nth-child(4) { border-left: 0; }
 .core .item .x { width: 64px; height: 64px; color: var(--blue); }
 .core .item .big { font-weight: 500; font-size: 64px; line-height: .9; letter-spacing: -0.02em; color: var(--blue); }
 .core .item h3 { font-size: 28px; letter-spacing: -0.02em; }
@@ -247,6 +247,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   .hero .wrap { gap: 48px; padding-block: 48px; }
   .sechead { gap: 20px; }
   .steps, .prices, .core { grid-template-columns: 1fr; }
+  .core .item, .core .item:nth-child(n+4) { grid-column: auto; }
   .price, .price + .price, .step, .step + .step, .core .item, .core .item + .item { padding: 22px 0; border-left: 0; }
   .price + .price, .step + .step, .core .item + .item { border-top: 1px solid var(--ink); }
   section.block .wrap { padding-block: 56px; }
@@ -260,8 +261,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   .tb-visita { display: none; }
   .logo img { height: 36px; }
   .tab { font-size: 14px; padding: 9px 14px; }
-  .topbar .wrap { font-size: 12px; gap: 10px; flex-wrap: wrap; }
   .card { transform: rotate(-2deg); }
+  .topbar .wrap { font-size: 12px; gap: 10px; flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .card { transition: transform .36s var(--ease); }
@@ -323,7 +324,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="tab" href="#prezzi">Prezzi</a>
           <a class="tab" href="#richiesta">Richiedi</a>
         </nav>
-        <p class="lead">La card per chi vive l'EXMA: riduzioni agli eventi EXMA, vantaggi con i nostri partner e in omaggio la felpa EXMA con ricamo.</p>
+        <p class="lead">La card per chi vive l'EXMA: riduzioni agli eventi EXMA, vantaggi con i nostri partner e in omaggio la maglietta EXMA con ricamo.</p>
         <div class="actions">
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
@@ -331,15 +332,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta online la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità, e paghi in sede.</p>
       </div>
       <div class="cardstage">
-        <div class="card" role="img" aria-label="Anteprima della tessera EXMA Card in plastica riciclata">
-          <svg class="bigx" aria-hidden="true"><use href="#xmark"/></svg>
-          <div class="row">
-            <div class="brand"><img src="assets/exma-wordmark-white.png" alt=""></div>
-          </div>
-          <div class="row" style="align-items:flex-end">
-            <div class="holder">Titolare<b>Nome Cognome</b></div>
-            <div class="year">2027</div>
-          </div>
+        <div class="cards" role="img" aria-label="Anteprima della tessera EXMA Card: nera, con il logo EXMA">
+          <div class="card front"><img src="assets/exma-wordmark-white.png" alt=""></div>
         </div>
         <img class="felpa-hero" src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
       </div>
@@ -362,7 +356,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <div class="core">
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
-          <h3>Una felpa EXMA in omaggio</h3>
+          <h3>Una maglietta EXMA in omaggio</h3>
           <p>Ritirala assieme alla tessera.</p>
         </div>
         <div class="item">
@@ -375,22 +369,25 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <h3>Vantaggi dedicati presso i nostri partner</h3>
           <p>Scopri quali sono qui sotto.</p>
         </div>
+        <div class="item">
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /> <path d="M7.5 7.5h.01" /></svg>
+          <h3>Sconto del 30% sul merchandising EXMA</h3>
+          <p>Su tutti i prodotti del merchandising EXMA.</p>
+        </div>
+        <div class="item">
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 10 0v4" /><rect x="3" y="11" width="18" height="11" /></svg>
+          <h3>Accesso a contenuti esclusivi EXMA</h3>
+          <p>Riservati ai titolari della tessera.</p>
+        </div>
       </div>
       <div class="felpa">
         <img src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
         <div>
-          <h3>La felpa EXMA, impreziosita dal dettaglio cucito a mano.</h3>
+          <h3>La maglietta EXMA, impreziosita dal dettaglio cucito a mano.</h3>
           <p>Scegli la taglia nel modulo e ritirala insieme alla tessera.</p>
         </div>
       </div>
-      <div class="felpa felpa-kids">
-        <img src="assets/felpa-kids.png" alt="Felpa EXMA KIDS blu con la grafica rossa, vista davanti e dietro" loading="lazy">
-        <div>
-          <h3>Puoi anche scegliere la felpa KIDS!</h3>
-          <p>In alternativa alla felpa adulto, puoi scegliere la versione kids, con taglie dai 3 ai 14 anni.</p>
-        </div>
-      </div>
-      <p class="fineprint">Felpe in omaggio fino ad esaurimento scorte. In caso non ci sia la tua taglia, la ordineremo e ti avviseremo non appena sarà disponibile per il ritiro.</p>
+      <p class="fineprint">Magliette in omaggio fino ad esaurimento scorte. In caso non ci sia la tua taglia, la ordineremo e ti avviseremo non appena sarà disponibile per il ritiro.</p>
     </div>
   </section>
 
@@ -407,16 +404,11 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div><h2>Quanto costa</h2></div>
         <p>La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si fa in sede, al ritiro, con POS o contanti.</p>
       </div>
-      <div class="prices">
+      <div class="prices one">
         <div class="price">
-          <h3>Ridotto</h3>
+          <h3>Tessera EXMA Card</h3>
           <div class="amount">50 €</div>
-          <p>Fino a 34 anni compiuti. Al ritiro porta un documento d'identità che attesti l'età. Se l'età non corrisponde alla tariffa scelta, la differenza va versata al ritiro.</p>
-        </div>
-        <div class="price">
-          <h3>Intero</h3>
-          <div class="amount">100 €</div>
-          <p>Per chi ha 35 anni e oltre.</p>
+          <p>Al ritiro porta un documento d'identità valido.</p>
         </div>
       </div>
     </div>
@@ -430,8 +422,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       </div>
       <div class="steps">
         <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati e invia la richiesta. Bastano pochi minuti.</p></div>
-        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando tessera e felpa sono pronte per il ritiro.</p></div>
-        <div class="step"><div class="n">03</div><h3>Ritira e paga in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità e paga con POS o contanti. Insieme alla tessera ricevi la tua felpa.</p></div>
+        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando tessera e maglietta sono pronte per il ritiro.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritira e paga in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità e paga con POS o contanti. Insieme alla tessera ricevi la tua maglietta.</p></div>
       </div>
     </div>
   </section>
@@ -440,7 +432,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap formgrid">
       <div class="formside">
         <h2>Richiedi la tua tessera</h2>
-        <p>Compila il modulo. Quando la tessera e la felpa sono pronte per il ritiro, ti mandiamo una mail.</p>
+        <p>Compila il modulo. Quando la tessera e la maglietta sono pronte per il ritiro, ti mandiamo una mail.</p>
         <div class="box">
           <h3>Ritiro in sede</h3>
           <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
@@ -455,7 +447,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <form id="cardform" novalidate>
         <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" required><span class="err"></span></div>
         <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" autocomplete="family-name" required><span class="err"></span></div>
-        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><small class="hint">Serve a verificare la tariffa.</small><span class="err"></span></div>
+        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><span class="err"></span></div>
         <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
         <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
         <!-- TODO: decidere se tenerli, vedi consulente privacy -->
@@ -463,12 +455,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
         <div class="field"><label for="piva">Partita IVA <span class="opt">(solo aziende)</span></label><input id="piva" name="piva" type="text" inputmode="numeric" autocomplete="off" maxlength="11"><span class="err"></span></div>
         <div class="field"><label for="sdi">Codice Univoco <span class="opt">(solo aziende)</span></label><input id="sdi" name="sdi" type="text" autocomplete="off" maxlength="7" style="text-transform:uppercase"><span class="err"></span></div>
-        <div class="field full"><label for="taglia">Taglia felpa</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><optgroup label="Felpa adulto"><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></optgroup><optgroup label="Felpa KIDS"><option>Kids 3-4 anni</option><option>Kids 5-6 anni</option><option>Kids 7-8 anni</option><option>Kids 9-10 anni</option><option>Kids 11-12 anni</option><option>Kids 13-14 anni</option></optgroup></select><small class="hint">Una sola felpa per tessera: adulto o kids.</small><span class="err"></span></div>
-        <fieldset class="radios">
-          <legend>Tariffa</legend>
-          <label class="radio"><input type="radio" name="tariffa" id="t-ridotta" value="ridotta"><span>Ridotta 50 € · Under 35</span></label>
-          <label class="radio"><input type="radio" name="tariffa" id="t-intera" value="intera" checked><span>Intera 100 € · Over 35</span></label>
-        </fieldset>
+        <div class="field full"><label for="taglia">Taglia maglietta</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select><small class="hint">Una sola maglietta per tessera.</small><span class="err"></span></div>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
           <!-- TODO: URL reale prima della pubblicazione -->
@@ -528,7 +515,7 @@ const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da defin
 const AZIENDE = [
   { nome: "Sardegna Teatro",     gruppo: "team", url: "https://www.sardegnateatro.it/", vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
   { nome: "Fuorimargine",        gruppo: "team", url: "https://www.fuorimargine.eu/",   vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
-  { nome: "Radio X Social Club", gruppo: "team", url: "https://www.radiox.it/",         vantaggio: "Sconto al Bar del 15%" },
+  { nome: "Radio X Social Club", gruppo: "team", url: "https://www.radiox.it/",         vantaggio: "Sconto al Bar del 15%. My EXMA in Radio: [descrizione da aggiungere]" },
   { nome: "The Net Value",       gruppo: "team", url: "https://thenetvalue.com/",       vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi" },
   { nome: "Tuttestorie",         gruppo: "altri", url: null,                             vantaggio: "Sconto del x% sui libri (da confermare)" },
   { nome: "Spazio Mesu",         gruppo: "altri", url: null,                             vantaggio: "xxxx" }
@@ -600,7 +587,7 @@ form.addEventListener("submit", e => {
   let ok = true;
   const msgs = {
     nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
-    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", taglia: "Scegli la taglia della felpa.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
+    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", taglia: "Scegli la taglia della maglietta.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
     telefono: "Inserisci un numero di telefono valido."
   };
   Object.keys(msgs).forEach(id => {
@@ -641,7 +628,7 @@ form.addEventListener("submit", e => {
     form.innerHTML = "";
     const d = document.createElement("div");
     d.className = "done";
-    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando tessera e felpa sono pronte per il ritiro. Il pagamento si fa in sede.</p>";
+    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando tessera e maglietta sono pronte per il ritiro. Il pagamento si fa in sede.</p>";
     d.querySelector("p").textContent = "Il tuo numero ordine è " + ordine + ".";
     if (!inviato) {
       const n = document.createElement("p");
