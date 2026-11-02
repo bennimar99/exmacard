@@ -97,15 +97,8 @@ strong { font-weight: 600; }
 .card.front { background: #1B1B1B; align-items: center; justify-content: center; }
 .card.front img { width: 72%; height: auto; }
 
-/* Maglietta */
-.felpa-hero { width: min(100%, 440px); margin-top: 40px; border-radius: 16px; justify-self: center; }
-.felpa { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
 
-.felpa-kids { margin-top: 24px; }
 .fineprint { margin: 28px 0 0; font-size: 13px; color: rgba(255,255,255,.6); max-width: 46em; }
-.felpa img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--paper); padding: 28px; }
-.felpa h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; margin-bottom: 14px; }
-.felpa p { margin: 0; color: rgba(255,255,255,.75); max-width: 28em; }
 
 /* Foto a tutta larghezza */
 .photo { position: relative; height: clamp(260px, 42vw, 520px); overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--ink); }
@@ -136,8 +129,6 @@ section.block .wrap { padding-block: 88px; }
 .price { padding: 28px 28px 12px 0; min-width: 0; }
 .price + .price { padding-left: 28px; border-left: 1px solid var(--ink); }
 .prices.one { grid-template-columns: 1fr 1fr; align-items: center; gap: 32px; }
-.price .launch { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--blue); margin: 0 0 4px; }
-.price .amount .was { font-family: var(--font-sans); font-size: 28px; font-weight: 400; letter-spacing: 0; color: var(--gray-500); text-decoration: line-through; margin-left: 14px; }
 .dark .price p.pricenote { color: var(--paper); font-size: 20px; max-width: 28em; margin: 0; }
 .price h3 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1; }
 .price .amount { color: var(--blue); font-weight: 500; font-size: clamp(56px, 7vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px; font-variant-numeric: tabular-nums; }
@@ -153,12 +144,9 @@ section.block .wrap { padding-block: 88px; }
 .step p { margin: 0; color: var(--gray-600); }
 
 /* Vantaggi */
-.core { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); margin-bottom: 64px; }
+.core { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); margin-bottom: 64px; }
 .core .item { padding: 36px 28px; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
-.core .item { grid-column: span 2; }
-.core .item:nth-child(n+4) { grid-column: span 3; border-top: 1px solid var(--ink); }
 .core .item + .item { border-left: 1px solid var(--ink); }
-.core .item:nth-child(4) { border-left: 0; }
 .core .item .x { width: 64px; height: 64px; color: var(--blue); }
 .core .item .big { font-weight: 500; font-size: 64px; line-height: .9; letter-spacing: -0.02em; color: var(--blue); }
 .core .item h3 { font-size: 28px; letter-spacing: -0.02em; }
@@ -250,14 +238,12 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   .hero .wrap { gap: 48px; padding-block: 48px; }
   .sechead { gap: 20px; }
   .steps, .prices, .core { grid-template-columns: 1fr; }
-  .core .item, .core .item:nth-child(n+4) { grid-column: auto; }
   .price, .price + .price, .step, .step + .step, .core .item, .core .item + .item { padding: 22px 0; border-left: 0; }
   .price + .price, .step + .step, .core .item + .item { border-top: 1px solid var(--ink); }
   section.block .wrap { padding-block: 56px; }
   .formgrid { gap: 40px; }
   .panel { grid-template-columns: 1fr; gap: 36px; }
   .xpanel { width: 180px; }
-  .felpa { grid-template-columns: 1fr; gap: 28px; margin-top: 40px; }
 }
 @media (max-width: 560px) {
   form { grid-template-columns: 1fr; }
@@ -327,7 +313,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="tab" href="#prezzi">Prezzi</a>
           <a class="tab" href="#richiesta">Richiedi</a>
         </nav>
-        <p class="lead">La card per chi vive l'EXMA: riduzioni agli eventi EXMA, vantaggi con i nostri partner e in omaggio la maglietta EXMA con ricamo.</p>
+        <p class="lead">La card per chi vive l'EXMA: sconti sugli eventi e sul merchandising EXMA, e vantaggi con i nostri partner.</p>
         <div class="actions">
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
@@ -338,7 +324,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="cards" role="img" aria-label="Anteprima della tessera EXMA Card: nera, con il logo EXMA">
           <div class="card front"><img src="assets/exma-wordmark-white.png" alt=""></div>
         </div>
-        <img class="felpa-hero" src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
       </div>
     </div>
   </section>
@@ -358,14 +343,9 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       </div>
       <div class="core">
         <div class="item">
-          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
-          <h3>Una maglietta EXMA in omaggio</h3>
-          <p>Ritirala assieme alla tessera.</p>
-        </div>
-        <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /></svg>
-          <h3>Biglietto ridotto per gli eventi EXMA</h3>
-          <p>Il biglietto ridotto vale sugli eventi organizzati direttamente da EXMA (CLOE Scarl). Non si applica a eventi di terzi o con biglietteria propria dei partner. Altre iniziative dedicate ai titolari ti saranno comunicate via email.</p>
+          <h3>Sconto del 10% sugli eventi EXMA</h3>
+          <p>Lo sconto vale sugli eventi organizzati direttamente da EXMA (CLOE Scarl). Non si applica a eventi di terzi o con biglietteria propria dei partner. Altre iniziative dedicate ai titolari ti saranno comunicate via email.</p>
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></svg>
@@ -374,23 +354,10 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         </div>
         <div class="item">
           <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /> <path d="M7.5 7.5h.01" /></svg>
-          <h3>Sconto del 20% sul merchandising EXMA</h3>
+          <h3>Sconto del 10% sul merchandising EXMA</h3>
           <p>Su tutti i prodotti del merchandising EXMA.</p>
         </div>
-        <div class="item">
-          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M9 3 4 5.5 2.5 17l3 .5L6.5 10V21h11V10l1 7.5 3-.5L20 5.5 15 3" /> <path d="M9 3a3 3 0 0 0 6 0" /></svg>
-          <h3>Sconto del 30% sulla felpa EXMA Kids</h3>
-          <p>Fino a esaurimento scorte.</p>
-        </div>
       </div>
-      <div class="felpa">
-        <img src="assets/felpa.png" alt="Felpa EXMA nera, vista davanti e dietro" loading="lazy">
-        <div>
-          <h3>La maglietta EXMA, impreziosita dal dettaglio cucito a mano.</h3>
-          <p>Scegli la taglia nel modulo e ritirala insieme alla tessera.</p>
-        </div>
-      </div>
-      <p class="fineprint">Magliette in omaggio fino ad esaurimento scorte. In caso non ci sia la tua taglia, la ordineremo e ti avviseremo non appena sarà disponibile per il ritiro.</p>
     </div>
   </section>
 
@@ -408,9 +375,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       </div>
       <div class="prices one">
         <div class="price">
-          <p class="launch">Prezzo di lancio fino al 30 novembre</p>
-          <div class="amount">50 € <span class="was" aria-label="invece di 70 euro">70 €</span></div>
-          <p>Dal 1° dicembre la tessera costa 70 €. Al ritiro porta un documento d'identità valido.</p>
+          <div class="amount">15 €</div>
+          <p>Prezzo fisso per tutti. Al ritiro porta un documento d'identità valido.</p>
         </div>
         <p class="pricenote">La tessera è valida dal giorno del ritiro fino al 31 dicembre 2027. Se la ritiri nel 2026, i vantaggi valgono da subito. Il pagamento si fa in sede, al ritiro, con POS o contanti.</p>
       </div>
@@ -425,8 +391,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       </div>
       <div class="steps">
         <div class="step"><div class="n">01</div><h3>Compila il modulo</h3><p>Inserisci i tuoi dati e invia la richiesta. Bastano pochi minuti.</p></div>
-        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando tessera e maglietta sono pronte per il ritiro.</p></div>
-        <div class="step"><div class="n">03</div><h3>Ritira e paga in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità e paga con POS o contanti. Insieme alla tessera ricevi la tua maglietta.</p></div>
+        <div class="step"><div class="n">02</div><h3>Ricevi la conferma</h3><p>Ti scriviamo via email quando la tessera è pronta per il ritiro.</p></div>
+        <div class="step"><div class="n">03</div><h3>Ritira e paga in EXMA</h3><p>Passa in Via San Lucifero 71 con un documento d'identità e paga con POS o contanti.</p></div>
       </div>
     </div>
   </section>
@@ -435,7 +401,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap formgrid">
       <div class="formside">
         <h2>Richiedi la tua tessera</h2>
-        <p>Compila il modulo. Quando la tessera e la maglietta sono pronte per il ritiro, ti mandiamo una mail.</p>
+        <p>Compila il modulo. Quando la tessera è pronta per il ritiro, ti mandiamo una mail.</p>
         <div class="box">
           <h3>Ritiro in sede</h3>
           <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
@@ -458,7 +424,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <div class="field"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
         <div class="field"><label for="piva">Partita IVA <span class="opt">(solo aziende)</span></label><input id="piva" name="piva" type="text" inputmode="numeric" autocomplete="off" maxlength="11"><span class="err"></span></div>
         <div class="field"><label for="sdi">Codice Univoco <span class="opt">(solo aziende)</span></label><input id="sdi" name="sdi" type="text" autocomplete="off" maxlength="7" style="text-transform:uppercase"><span class="err"></span></div>
-        <div class="field full"><label for="taglia">Taglia maglietta</label><select id="taglia" name="taglia" required><option value="">Scegli la taglia</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select><small class="hint">Una sola maglietta per tessera.</small><span class="err"></span></div>
         <div class="consent">
           <input id="privacy" name="privacy" type="checkbox" required>
           <!-- TODO: URL reale prima della pubblicazione -->
@@ -518,19 +483,15 @@ const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da defin
 const AZIENDE = [
   { nome: "Sardegna Teatro",     gruppo: "team", url: "https://www.sardegnateatro.it/", vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
   { nome: "Fuorimargine",        gruppo: "team", url: "https://www.fuorimargine.eu/",   vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
-  { nome: "Radio X Social Club", gruppo: "team", url: "https://www.radiox.it/",         vantaggio: "Sconto al Bar del 15%. My EXMA in Radio: [descrizione da aggiungere]" },
-  { nome: "The Net Value",       gruppo: "team", url: "https://thenetvalue.com/",       vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi" },
-  { nome: "Tuttestorie",         gruppo: "altri", url: null,                             vantaggio: "Sconto del x% sui libri (da confermare)" },
-  { nome: "Spazio Mesu",         gruppo: "altri", url: null,                             vantaggio: "xxxx" }
+  { nome: "Radio X Social Club", gruppo: "team", url: "https://www.radiox.it/",         vantaggio: "Sconto al Bar del 15%" },
+  { nome: "The Net Value",       gruppo: "team", url: "https://thenetvalue.com/",       vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi" }
 ];
 
 /* ---------- da qui in giù il codice della pagina ---------- */
 const lista = document.getElementById("perks");
 const GRUPPI = [
   { id: "team",  stile: "g", titolo: "Vantaggi offerti dal team EXMA.earth",
-    descrizione: "EXMA.earth è il progetto della società consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri i vantaggi che ti hanno dedicato, assieme al nostro network. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento." },
-  { id: "altri", stile: "w", titolo: "Vantaggi offerti dal network di EXMA",
-    descrizione: "L'EXMA è di tutta la città. Collaboriamo con le principali realtà culturali e artistiche del territorio, che offrono a tutti coloro che hanno l'EXMA Card dei vantaggi esclusivi." }
+    descrizione: "EXMA.earth è il progetto della società consortile CLOE (Teatro di Sardegna, Fuorimargine, The Net Value, Area X e Radio X). Scopri i vantaggi che ti hanno dedicato. Per potervi accedere, mostra la tessera in biglietteria o al momento del pagamento." },
 ];
 GRUPPI.forEach(g => {
   const voci = AZIENDE.filter(a => a.gruppo === g.id);
@@ -590,7 +551,7 @@ form.addEventListener("submit", e => {
   let ok = true;
   const msgs = {
     nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
-    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", taglia: "Scegli la taglia della maglietta.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
+    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
     telefono: "Inserisci un numero di telefono valido."
   };
   Object.keys(msgs).forEach(id => {
@@ -631,7 +592,7 @@ form.addEventListener("submit", e => {
     form.innerHTML = "";
     const d = document.createElement("div");
     d.className = "done";
-    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando tessera e maglietta sono pronte per il ritiro. Il pagamento si fa in sede.</p>";
+    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando la tessera è pronta per il ritiro. Il pagamento si fa in sede.</p>";
     d.querySelector("p").textContent = "Il tuo numero ordine è " + ordine + ".";
     if (!inviato) {
       const n = document.createElement("p");
