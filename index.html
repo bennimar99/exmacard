@@ -109,6 +109,9 @@ strong { font-weight: 500; }
 .visit-text { max-width: 624px; }
 .visit-text h2 { font-size: clamp(30px, 2.84vw, 40px); line-height: 1; margin: 0 0 24px; }
 .visit-text p { font-size: 21px; font-weight: 300; line-height: 1.3; color: var(--ink); margin: 0 0 1.2em; }
+.visit-text .legallinks { display: flex; flex-direction: column; gap: 6px; margin: 28px 0 0; font-size: 16px; line-height: 1.4; }
+.legallinks a { color: var(--ink); text-underline-offset: 3px; }
+.legallinks a:hover { color: var(--blue); }
 .visit-text strong { font-weight: 500; }
 .btn.big { min-height: 72px; padding: 0 56px; font-size: 22px; margin-top: 12px; }
 .visit-cards { position: relative; width: 100%; max-width: 624px; aspect-ratio: 1 / .8; justify-self: center; }
@@ -462,6 +465,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <p>Porta un documento d'identità valido. Il ritiro va fatto entro 30 giorni dall'email che ti avvisa che la tessera è pronta: dopo questa data la richiesta scade.</p>
         <p>La tessera è intestata a te e la ritiri solo tu. Non viene spedita e non ha una versione digitale.</p>
         <a class="btn accent big" href="https://docs.google.com/forms/d/e/1FAIpQLSdraMn5HjhKi2VlTxJy54cRBdRwAPpvnm9OZcZlt_wmB5gKOg/viewform?usp=sharing&ouid=107962878130483512023" target="_blank" rel="noopener">Richiedi la tua tessera</a>
+        <p class="legallinks"><a id="terminilink" href="#">Termini e Condizioni Generali – EXMA Card</a><a id="privacylink" href="#">Privacy Policy – EXMA Card</a></p>
       </div>
       <div class="visit-cards" role="img" aria-label="La EXMA Card, fronte e retro">
         <img class="back" src="assets/tessera-retro.png" alt="" loading="lazy">
@@ -562,6 +566,8 @@ document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.t
 document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
 
 document.getElementById("privacylink2").href = PRIVACY_URL;
+document.getElementById("privacylink").href = PRIVACY_URL;
+document.getElementById("terminilink").href = TERMINI_URL;
 </script>
 </body>
 </html>
