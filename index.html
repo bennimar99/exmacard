@@ -35,7 +35,7 @@ img { max-width: 100%; display: block; }
 :where(a, button, input, [tabindex]):focus-visible { outline: none; box-shadow: 0 0 0 3px var(--blue-100), 0 0 0 1.5px var(--blue); }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: normal; line-height: 1; margin: 0; text-wrap: balance; }
 p { margin: 0 0 1em; text-wrap: pretty; }
-strong { font-weight: 600; }
+strong { font-weight: 500; }
 .wrap { max-width: 1280px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 .eyebrow { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--gray-600); }
 .xm { width: 18px; height: 18px; flex: none; color: var(--blue); }
@@ -108,8 +108,8 @@ strong { font-weight: 600; }
 .visit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
 .visit-text { max-width: 624px; }
 .visit-text h2 { font-size: clamp(30px, 2.84vw, 40px); line-height: 1; margin: 0 0 24px; }
-.visit-text p { font-size: 21px; font-weight: 400; line-height: 1.3; color: var(--ink); margin: 0 0 1.2em; }
-.visit-text strong { font-weight: 700; }
+.visit-text p { font-size: 21px; font-weight: 300; line-height: 1.3; color: var(--ink); margin: 0 0 1.2em; }
+.visit-text strong { font-weight: 500; }
 .btn.big { min-height: 72px; padding: 0 56px; font-size: 22px; margin-top: 12px; }
 .visit-cards { position: relative; width: 100%; max-width: 624px; aspect-ratio: 1 / .8; justify-self: center; }
 .visit-cards img { position: absolute; width: 70%; height: auto; border-radius: 16px; transition: transform .36s var(--ease); }
@@ -126,7 +126,7 @@ strong { font-weight: 600; }
 .xtext .xside { margin: 0 auto; width: min(100%, 340px); height: auto; aspect-ratio: 1; }
 .bodylead { max-width: 832px; }
 @media (max-width: 860px) { .xtext { grid-template-columns: 1fr; gap: 28px; } }
-.bodylead p { font-size: 21px; font-weight: 400; line-height: 1.3; margin: 0 0 1em; }
+.bodylead p { font-size: 21px; font-weight: 300; line-height: 1.3; margin: 0 0 1em; }
 .bodylead p:last-child { margin-bottom: 0; }
 
 /* Sezioni */
