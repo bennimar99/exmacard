@@ -107,8 +107,8 @@ strong { font-weight: 600; }
 #exma-di-tutti .wrap { padding-block: clamp(40px, 6vw, 88px); }
 .bighead { font-size: clamp(40px, 6.77vw, 130px); line-height: 1; margin: 0; }
 #exma-testo .wrap { padding-block: clamp(40px, 6vw, 88px); }
-.xtext { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
-.xtext .xside { margin-bottom: 0; width: min(100%, 340px); height: auto; aspect-ratio: 1; }
+.xtext { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
+.xtext .xside { margin: 0 auto; width: min(100%, 340px); height: auto; aspect-ratio: 1; }
 .bodylead { max-width: 832px; }
 @media (max-width: 860px) { .xtext { grid-template-columns: 1fr; gap: 28px; } }
 .bodylead p { font-size: 21px; font-weight: 400; line-height: 1.3; margin: 0 0 1em; }
@@ -177,7 +177,7 @@ section.block .wrap { padding-block: 88px; }
 @media (max-width: 860px) { .dark .core .item + .item { border-top-color: rgba(255,255,255,.35); } }
 .stack { display: grid; gap: 16px; }
 .subintro { margin: 0; color: var(--ink); max-width: 34em; }
-.panel { background: var(--panel); border-radius: 16px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.panel { background: var(--panel); border-radius: 16px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .panel.w { background: var(--paper); border: 1.5px solid var(--ink); }
 .panel-l { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
 .panel h2 { font-size: clamp(34px, 4.6vw, 64px); }
@@ -271,6 +271,8 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .perk h3 { transition: color .3s; } .perk:hover h3 { transform: none; } html { scroll-behavior: auto; } .photo img { transition: none; } }
 
+/* Senza righe di separazione (resta solo quella sotto l'intestazione) */
+.hero, .photo, section.block, .prices, .price, .price + .price, .steps, .step, .step + .step, .core, .core .item, .core .item + .item { border: 0 !important; }
 </style>
 </head>
 <body>
@@ -330,7 +332,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
           <a class="btn accent" href="#richiesta">Richiedi la tessera</a>
           <a class="btn outline" href="#vantaggi">Vedi i vantaggi</a>
         </div>
-        <p class="physical">La tessera è nominativa e non cedibile, valida dal ritiro al 31 dicembre 2027. È solo fisica: dopo la richiesta online la ritiri di persona in EXMA, in Via San Lucifero 71 a Cagliari, con un documento d'identità, e paghi in sede.</p>
       </div>
       <div class="cardstage">
         <div class="cards" role="img" aria-label="Anteprima della tessera EXMA Card: nera, con il logo EXMA">
@@ -353,7 +354,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="exma-testo">
     <div class="wrap">
       <div class="xtext">
-        <svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg>
+      <svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg>
       <div class="bodylead">
         <p>Abbiamo immaginato il nuovo EXMA come spazio generativo capace di usare i linguaggi dell’arte e dell’innovazione per accogliere e far crescere una grande comunità. Abbiamo chiamato questo progetto Earth, come una nuova terra da abitare insieme. Un giardino fertile di idee, una grande piazza cittadina, un <em>playground</em> creativo dove si incrociano generazioni e culture, un avamposto di contatto e di scambio artistico tra Cagliari, la Sardegna e il mondo.</p>
         <p>Questo spazio è un pezzo di storia e vuole continuare a essere una risorsa importante per la città. Un magnete e un centro propulsivo per la cultura, le arti e l’innovazione. A noi il compito di prendercene cura, risanarlo, migliorarlo, riempirlo di contenuti e renderlo ogni giorno più bello e inclusivo. A tutti voi quello di viverlo e aiutarlo a crescere. Diventandone parte attiva, lievito madre, portatori di idee. Perché vivere EXMA non vuol dire solo frequentarne gli spazi e gli eventi. Significa sentirsi a casa, entrare in sintonia coi progetti e le altre persone che lo abitano, aiutare il progetto a essere sempre più inclusivo, visionario e potente.</p>
