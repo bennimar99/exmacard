@@ -105,6 +105,20 @@ strong { font-weight: 600; }
 .photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95); transition: transform .36s var(--ease); }
 .photo:hover img { transform: scale(1.04); }
 #exma-di-tutti .wrap { padding-block: clamp(40px, 6vw, 88px); }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.visit-text { max-width: 624px; }
+.visit-text h2 { font-size: clamp(30px, 2.84vw, 40px); line-height: 1; margin: 0 0 24px; }
+.visit-text p { font-size: 21px; font-weight: 400; line-height: 1.3; color: var(--ink); margin: 0 0 1.2em; }
+.visit-text strong { font-weight: 700; }
+.btn.big { min-height: 72px; padding: 0 56px; font-size: 22px; margin-top: 12px; }
+.visit-cards { position: relative; width: 100%; max-width: 624px; aspect-ratio: 1 / .8; justify-self: center; }
+.visit-cards img { position: absolute; width: 70%; height: auto; border-radius: 16px; filter: drop-shadow(0 14px 28px rgba(11,11,11,.22)); transition: transform .36s var(--ease); }
+.visit-cards .back { right: 0; bottom: 0; transform: rotate(4deg); }
+.visit-cards .front { left: 0; top: 0; transform: rotate(-5deg); }
+.visit-cards:hover .back { transform: rotate(6deg) translate(6px, 4px); }
+.visit-cards:hover .front { transform: rotate(-7deg) translate(-6px, -4px); }
+@media (max-width: 860px) { .visit { grid-template-columns: 1fr; } .visit-cards { justify-self: center; } }
+@media (prefers-reduced-motion: reduce) { .visit-cards img { transition: none; } }
 .sechead h2.oneline { white-space: nowrap; font-size: clamp(30px, 4.9vw, 70px); }
 .bighead { font-size: clamp(40px, 6.77vw, 130px); line-height: 1; margin: 0; }
 #exma-testo .wrap { padding-block: clamp(40px, 6vw, 88px); }
@@ -197,8 +211,6 @@ section.block .wrap { padding-block: 88px; }
 
 /* Richiesta */
 .formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
-.formcta { display: flex; align-items: center; justify-content: center; }
-.formcta .btn { min-height: 72px; padding: 0 56px; font-size: 22px; }
 .formside h2 { font-size: clamp(34px, 4.6vw, 64px); margin: 0 0 22px; }
 .formside p { color: var(--gray-600); margin: 0 0 14px; }
 .formside .box { border: 1.5px solid var(--ink); padding: 24px; margin-top: 24px; }
@@ -437,23 +449,18 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   </section>
 
   <section class="block" id="richiesta">
-    <div class="wrap formgrid">
-      <div class="formside">
+    <div class="wrap visit">
+      <div class="visit-text">
         <h2>Richiedi la tua tessera</h2>
         <p>Compila il modulo online. Quando la tessera è pronta per il ritiro, ti mandiamo una mail.</p>
-        <div class="box">
-          <h3>Ritiro in sede</h3>
-          <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
-          <p>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
-          <p>Porta un documento d'identità valido.</p>
-          <p>Il ritiro va fatto entro 30 giorni dall'email che ti avvisa che la tessera è pronta: dopo questa data la richiesta scade.</p>
-          <p>La tessera è intestata a te e la ritiri solo tu.</p>
-          <p style="color:var(--gray-600)">La tessera non viene spedita e non ha una versione digitale.</p>
-        </div>
+        <p><strong>Ritiro in sede</strong> EXMA, Via San Lucifero 71, 09127 Cagliari<br>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
+        <p>Porta un documento d'identità valido. Il ritiro va fatto entro 30 giorni dall'email che ti avvisa che la tessera è pronta: dopo questa data la richiesta scade.</p>
+        <p>La tessera è intestata a te e la ritiri solo tu. Non viene spedita e non ha una versione digitale.</p>
+        <a class="btn accent big" href="https://docs.google.com/forms/d/e/1FAIpQLSdraMn5HjhKi2VlTxJy54cRBdRwAPpvnm9OZcZlt_wmB5gKOg/viewform?usp=sharing&ouid=107962878130483512023" target="_blank" rel="noopener">Richiedi la tua tessera</a>
       </div>
-
-      <div class="formcta">
-        <a class="btn accent" href="https://docs.google.com/forms/d/e/1FAIpQLSdraMn5HjhKi2VlTxJy54cRBdRwAPpvnm9OZcZlt_wmB5gKOg/viewform?usp=sharing&ouid=107962878130483512023" target="_blank" rel="noopener">Richiedi la tua tessera</a>
+      <div class="visit-cards" role="img" aria-label="La EXMA Card, fronte e retro">
+        <img class="back" src="assets/tessera-retro.png" alt="" loading="lazy">
+        <img class="front" src="assets/tessera-fronte.png" alt="" loading="lazy">
       </div>
     </div>
   </section>
