@@ -187,6 +187,7 @@ section.block .wrap { padding-block: 88px; }
 
 /* Richiesta */
 .formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
+.formcta { display: flex; align-items: flex-start; }
 .formside h2 { font-size: clamp(34px, 4.6vw, 64px); margin: 0 0 22px; }
 .formside p { color: var(--gray-600); margin: 0 0 14px; }
 .formside .box { border: 1.5px solid var(--ink); padding: 24px; margin-top: 24px; }
@@ -434,7 +435,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     <div class="wrap formgrid">
       <div class="formside">
         <h2>Richiedi la tua tessera</h2>
-        <p>Compila il modulo. Quando la tessera è pronta per il ritiro, ti mandiamo una mail.</p>
+        <p>Compila il modulo online. Quando la tessera è pronta per il ritiro, ti mandiamo una mail.</p>
         <div class="box">
           <h3>Ritiro in sede</h3>
           <p>EXMA, Via San Lucifero 71, 09127 Cagliari</p>
@@ -446,34 +447,9 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         </div>
       </div>
 
-      <form id="cardform" novalidate>
-        <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" required><span class="err"></span></div>
-        <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" autocomplete="family-name" required><span class="err"></span></div>
-        <div class="field"><label for="nascita">Data di nascita</label><input id="nascita" name="nascita" type="date" autocomplete="bday" required><span class="err"></span></div>
-        <div class="field"><label for="telefono">Numero di telefono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567"><span class="err"></span></div>
-        <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nome@esempio.it"><span class="err"></span></div>
-        <!-- TODO: decidere se tenerli, vedi consulente privacy -->
-        <div class="field"><label for="cf">Codice Fiscale</label><input id="cf" name="cf" type="text" autocomplete="off" required maxlength="16" style="text-transform:uppercase"><span class="err"></span></div>
-        <div class="field"><label for="indirizzo">Indirizzo</label><input id="indirizzo" name="indirizzo" type="text" autocomplete="street-address" required placeholder="Via, numero civico, CAP, città"><span class="err"></span></div>
-        <div class="field"><label for="piva">Partita IVA <span class="opt">(solo aziende)</span></label><input id="piva" name="piva" type="text" inputmode="numeric" autocomplete="off" maxlength="11"><span class="err"></span></div>
-        <div class="field"><label for="sdi">Codice Univoco <span class="opt">(solo aziende)</span></label><input id="sdi" name="sdi" type="text" autocomplete="off" maxlength="7" style="text-transform:uppercase"><span class="err"></span></div>
-        <div class="consent">
-          <input id="privacy" name="privacy" type="checkbox" required>
-          <!-- TODO: URL reale prima della pubblicazione -->
-          <label for="privacy">Ho letto l'<a id="privacylink" href="#">informativa privacy della EXMA Card</a> e acconsento al trattamento dei miei dati per il rilascio della tessera.</label>
-        </div>
-        <div class="field full" style="margin-top:-14px"><span class="err" id="privacyerr"></span></div>
-        <div class="consent">
-          <input id="termini" name="termini" type="checkbox" required>
-          <!-- TODO: URL reale prima della pubblicazione -->
-          <label for="termini">Accetto i <a id="terminilink" href="#">Termini e Condizioni Generali della EXMA Card</a>.</label>
-        </div>
-        <div class="field full" style="margin-top:-14px"><span class="err" id="terminierr"></span></div>
-        <p class="reqnote">Tutti i campi sono obbligatori, eccetto Partita IVA e Codice Univoco.</p>
-        <div class="submitrow">
-          <button class="btn accent" id="submitbtn" type="submit">Invia richiesta</button>
-        </div>
-      </form>
+      <div class="formcta">
+        <a class="btn accent" href="https://docs.google.com/forms/d/e/1FAIpQLSdraMn5HjhKi2VlTxJy54cRBdRwAPpvnm9OZcZlt_wmB5gKOg/viewform?usp=sharing&ouid=107962878130483512023" target="_blank" rel="noopener">Richiedi la tua tessera</a>
+      </div>
     </div>
   </section>
 </main>
@@ -510,7 +486,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
    Per aggiungere o cambiare un'azienda basta modificare l'elenco qui sotto.
    ============================================================ */
 const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
-const INVIA_URL = ""; // TODO: indirizzo a cui inviare i dati del modulo (es. Apps Script); vuoto = nessun invio
 const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da definire)
 
 const AZIENDE = [
@@ -569,84 +544,7 @@ burger.addEventListener("click", e => { e.stopPropagation(); toggleMenu(menu.hid
 document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) toggleMenu(false); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
 
-["privacylink", "privacylink2"].forEach(id => { document.getElementById(id).href = PRIVACY_URL; });
-document.getElementById("terminilink").href = TERMINI_URL;
-
-/* Modulo: controlli e conferma (prototipo, nessun invio reale) */
-const form = document.getElementById("cardform");
-const submitBtn = document.getElementById("submitbtn");
-function setErr(input, msg) {
-  const f = input.closest(".field");
-  if (f) { f.classList.toggle("invalid", !!msg); f.querySelector(".err").textContent = msg || ""; }
-}
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  let ok = true;
-  const msgs = {
-    nome: "Inserisci il nome.", cognome: "Inserisci il cognome.", nascita: "Inserisci la data di nascita.",
-    cf: "Inserisci un codice fiscale valido (16 caratteri).", indirizzo: "Inserisci l'indirizzo completo.", email: "Inserisci un'email valida, ad esempio nome@esempio.it.",
-    telefono: "Inserisci un numero di telefono valido."
-  };
-  Object.keys(msgs).forEach(id => {
-    const el = document.getElementById(id);
-    let bad = !el.value.trim();
-    if (id === "email" && !bad) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
-    if (id === "telefono" && !bad) bad = el.value.replace(/[^\d]/g, "").length < 8;
-    if (id === "nascita" && !bad) bad = new Date(el.value) > new Date();
-    if (id === "cf" && !bad) bad = !/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i.test(el.value.trim());
-    setErr(el, bad ? msgs[id] : "");
-    if (bad) ok = false;
-  });
-  const opz = { piva: [/^\d{11}$/, "La Partita IVA ha 11 cifre."], sdi: [/^[A-Z0-9]{6,7}$/i, "Il Codice Univoco ha 6 o 7 caratteri."] };
-  Object.keys(opz).forEach(id => {
-    const el = document.getElementById(id), v = el.value.trim();
-    const bad = v !== "" && !opz[id][0].test(v);
-    setErr(el, bad ? opz[id][1] : "");
-    if (bad) ok = false;
-  });
-  const priv = document.getElementById("privacy");
-  document.getElementById("privacyerr").textContent = priv.checked ? "" : "Per richiedere la tessera serve il consenso al trattamento dei dati.";
-  if (!priv.checked) ok = false;
-  const term = document.getElementById("termini");
-  document.getElementById("terminierr").textContent = term.checked ? "" : "Per richiedere la tessera devi accettare i Termini e Condizioni.";
-  if (!term.checked) ok = false;
-  if (!ok) { form.querySelector(".invalid input, #privacy:not(:checked), #termini:not(:checked)")?.focus(); return; }
-
-  const nome = document.getElementById("nome").value.trim();
-
-  /* Numero ordine: EX- + AAAAMMGG + - + 4 cifre casuali */
-  const oggi = new Date();
-  const aaaammgg = oggi.getFullYear() + String(oggi.getMonth() + 1).padStart(2, "0") + String(oggi.getDate()).padStart(2, "0");
-  const ordine = "EX-" + aaaammgg + "-" + String(Math.floor(Math.random() * 10000)).padStart(4, "0");
-  const dati = Object.fromEntries(new FormData(form));
-  dati.ordine = ordine;
-
-  function conferma(inviato) {
-    form.innerHTML = "";
-    const d = document.createElement("div");
-    d.className = "done";
-    d.innerHTML = "<h3>Richiesta ricevuta</h3><p></p><p>Ti scriviamo via email quando la tessera è pronta per il ritiro. Il pagamento si fa in sede.</p>";
-    d.querySelector("p").textContent = "Il tuo numero ordine è " + ordine + ".";
-    if (!inviato) {
-      const n = document.createElement("p");
-      n.style.cssText = "color:var(--gray-500);font-size:14px";
-      n.textContent = "Prototipo: i dati non sono stati inviati né salvati.";
-      d.appendChild(n);
-    }
-    form.appendChild(d);
-  }
-
-  if (!INVIA_URL) { conferma(false); return; }
-  submitBtn.disabled = true;
-  fetch(INVIA_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dati) })
-    .then(r => { if (!r.ok) throw new Error(r.status); conferma(true); })
-    .catch(() => {
-      submitBtn.disabled = false;
-      let e = document.getElementById("senderr");
-      if (!e) { e = document.createElement("p"); e.id = "senderr"; e.className = "reqnote"; e.style.color = "var(--err)"; form.querySelector(".submitrow").before(e); }
-      e.textContent = "Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.";
-    });
-});
+document.getElementById("privacylink2").href = PRIVACY_URL;
 </script>
 </body>
 </html>
