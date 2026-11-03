@@ -105,6 +105,7 @@ strong { font-weight: 600; }
 .photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95); transition: transform .36s var(--ease); }
 .photo:hover img { transform: scale(1.04); }
 #exma-di-tutti .wrap { padding-block: clamp(40px, 6vw, 88px); }
+.sechead h2.oneline { white-space: nowrap; font-size: clamp(30px, 4.9vw, 70px); }
 .bighead { font-size: clamp(40px, 6.77vw, 130px); line-height: 1; margin: 0; }
 #exma-testo .wrap { padding-block: clamp(40px, 6vw, 88px); }
 .xtext { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
@@ -271,8 +272,9 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .perk h3 { transition: color .3s; } .perk:hover h3 { transform: none; } html { scroll-behavior: auto; } .photo img { transition: none; } }
 
-/* Senza righe di separazione (resta solo quella sotto l'intestazione) */
-.hero, .photo, section.block, .prices, .price, .price + .price, .steps, .step, .step + .step, .core, .core .item, .core .item + .item { border: 0 !important; }
+/* Niente righe tra le sezioni né sotto "Quanto costa"; restano quelle dentro le sezioni */
+.hero, .photo, section.block, .prices { border: 0 !important; }
+#come { border-bottom: 1px solid var(--ink) !important; }
 </style>
 </head>
 <body>
@@ -423,7 +425,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block" id="come">
     <div class="wrap">
       <div class="sechead">
-        <div><h2>Tre passaggi</h2></div>
+        <div><h2 class="oneline">Tre passaggi</h2></div>
         <p>Richiedi la tua EXMA Card online e ritirala in EXMA (Via San Lucifero 71, Cagliari), dove la paghi.</p>
       </div>
       <div class="steps">
