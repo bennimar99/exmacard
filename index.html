@@ -77,7 +77,7 @@ strong { font-weight: 600; }
 
 /* Hero */
 .hero { border-bottom: 1px solid var(--ink); }
-.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding-block: 72px 64px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding-block: 72px clamp(96px, 12vw, 180px); }
 .hero h1 { font-size: clamp(48px, 7.4vw, 112px); line-height: 1; letter-spacing: normal; margin: 0 0 28px; }
 .herotabs { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 36px; }
 .tab { display: inline-flex; align-items: center; gap: 10px; background: var(--panel); color: var(--ink); border-radius: 4px; padding: 11px 22px; font-size: 16px; line-height: 1.2; text-decoration: none; transition: background .2s var(--ease), color .2s var(--ease); }
@@ -267,7 +267,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
 
 @media (max-width: 860px) {
   .hero .wrap, .sechead, .formgrid, footer .wrap { grid-template-columns: 1fr; }
-  .hero .wrap { gap: 48px; padding-block: 48px; }
+  .hero .wrap { gap: 48px; padding-block: 48px 80px; }
   .sechead { gap: 20px; }
   .steps, .prices, .core { grid-template-columns: 1fr; }
   .price, .price + .price, .step, .step + .step, .core .item, .core .item + .item { padding: 22px 0; border-left: 0; }
