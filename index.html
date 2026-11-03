@@ -104,6 +104,15 @@ strong { font-weight: 600; }
 .photo { position: relative; height: clamp(260px, 42vw, 520px); overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--ink); }
 .photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95); transition: transform .36s var(--ease); }
 .photo:hover img { transform: scale(1.04); }
+#exma-di-tutti .wrap { padding-block: clamp(40px, 6vw, 88px); }
+.bighead { font-size: clamp(40px, 6.77vw, 130px); line-height: 1; margin: 0; }
+#exma-testo .wrap { padding-block: clamp(40px, 6vw, 88px); }
+.xtext { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+.xtext .xside { margin-bottom: 0; width: min(100%, 340px); height: auto; aspect-ratio: 1; }
+.bodylead { max-width: 832px; }
+@media (max-width: 860px) { .xtext { grid-template-columns: 1fr; gap: 28px; } }
+.bodylead p { font-size: 21px; font-weight: 400; line-height: 1.3; margin: 0 0 1em; }
+.bodylead p:last-child { margin-bottom: 0; }
 
 /* Sezioni */
 section.block { border-bottom: 1px solid var(--ink); }
@@ -187,7 +196,8 @@ section.block .wrap { padding-block: 88px; }
 
 /* Richiesta */
 .formgrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
-.formcta { display: flex; align-items: flex-start; }
+.formcta { display: flex; align-items: center; justify-content: center; }
+.formcta .btn { min-height: 72px; padding: 0 56px; font-size: 22px; }
 .formside h2 { font-size: clamp(34px, 4.6vw, 64px); margin: 0 0 22px; }
 .formside p { color: var(--gray-600); margin: 0 0 14px; }
 .formside .box { border: 1.5px solid var(--ink); padding: 24px; margin-top: 24px; }
@@ -330,38 +340,30 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
     </div>
   </section>
 
+  <section class="block" id="exma-di-tutti">
+    <div class="wrap">
+      <h2 class="bighead">Diventa parte attiva di EXMA</h2>
+    </div>
+  </section>
+
   <div class="photo">
     <img src="assets/folla-blu.jpg" alt="Il pubblico seduto sulle gradinate dell'EXMA durante una serata" loading="lazy">
   </div>
 
-  <section class="block dark" id="exma-di-tutti">
+  <section class="block" id="exma-testo">
     <div class="wrap">
-      <div class="sechead">
-        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>EXMA è di tutti</h2></div>
-        <div class="supporttext">
-          <p>Abbiamo immaginato il nuovo EXMA come spazio generativo capace di usare i linguaggi dell’arte e dell’innovazione per accogliere e far crescere una grande comunità. Abbiamo chiamato questo progetto Earth, come una nuova terra da abitare insieme. Un giardino fertile di idee, una grande piazza cittadina, un playground creativo dove si incrociano generazioni e culture, un avamposto di contatto e di scambio artistico tra Cagliari, la Sardegna e il mondo.</p>
-        </div>
+      <div class="xtext">
+        <svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg>
+      <div class="bodylead">
+        <p>Abbiamo immaginato il nuovo EXMA come spazio generativo capace di usare i linguaggi dell’arte e dell’innovazione per accogliere e far crescere una grande comunità. Abbiamo chiamato questo progetto Earth, come una nuova terra da abitare insieme. Un giardino fertile di idee, una grande piazza cittadina, un <em>playground</em> creativo dove si incrociano generazioni e culture, un avamposto di contatto e di scambio artistico tra Cagliari, la Sardegna e il mondo.</p>
+        <p>Questo spazio è un pezzo di storia e vuole continuare a essere una risorsa importante per la città. Un magnete e un centro propulsivo per la cultura, le arti e l’innovazione. A noi il compito di prendercene cura, risanarlo, migliorarlo, riempirlo di contenuti e renderlo ogni giorno più bello e inclusivo. A tutti voi quello di viverlo e aiutarlo a crescere. Diventandone parte attiva, lievito madre, portatori di idee. Perché vivere EXMA non vuol dire solo frequentarne gli spazi e gli eventi. Significa sentirsi a casa, entrare in sintonia coi progetti e le altre persone che lo abitano, aiutare il progetto a essere sempre più inclusivo, visionario e potente.</p>
+      </div>
       </div>
     </div>
   </section>
 
   <div class="photo">
     <img src="assets/danza.jpg" alt="Una performance di danza nel cortile dell'EXMA" loading="lazy">
-  </div>
-
-  <section class="block dark" id="exma-storia">
-    <div class="wrap">
-      <div class="sechead">
-        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Diventa parte attiva di EXMA</h2></div>
-        <div class="supporttext">
-          <p>Questo spazio è un pezzo di storia e vuole continuare a essere una risorsa importante per la città. Un magnete e un centro propulsivo per la cultura, le arti e l’innovazione. A noi il compito di prendercene cura, risanarlo, migliorarlo, riempirlo di contenuti e renderlo ogni giorno più bello e inclusivo. A tutti voi quello di viverlo e aiutarlo a crescere. Diventandone parte attiva, lievito madre, portatori di idee.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="photo">
-    <img src="assets/ingresso.jpg" alt="Il pubblico in fila all'ingresso dell'EXMA" loading="lazy">
   </div>
 
   <section class="block dark" id="vantaggi">
