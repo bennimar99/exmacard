@@ -122,6 +122,10 @@ strong { font-weight: 500; }
 .visit-cards:hover .front { transform: rotate(-7deg) translate(-6px, -4px); }
 @media (max-width: 860px) { .visit { grid-template-columns: 1fr; } .visit-cards { justify-self: center; } }
 @media (prefers-reduced-motion: reduce) { .visit-cards img { transition: none; } }
+.dashlist { list-style: none; margin: 0; padding: 0; }
+.dashlist li { position: relative; padding-left: 1.1em; margin: 0 0 6px; color: var(--ink); max-width: 34em; }
+.dashlist li:last-child { margin-bottom: 0; }
+.dashlist li::before { content: "–"; position: absolute; left: 0; }
 .sechead h2.oneline { white-space: nowrap; font-size: clamp(30px, 4.9vw, 70px); }
 .bighead { font-size: clamp(40px, 6.77vw, 130px); line-height: 1; margin: 0; }
 #exma-testo .wrap { padding-block: clamp(40px, 6vw, 88px); }
@@ -349,7 +353,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
         <nav class="herotabs" aria-label="Sezioni della pagina">
           <a class="tab" href="#exma-testo">Il progetto</a>
           <a class="tab" href="#vantaggi">Vantaggi</a>
-          <a class="tab" href="#prezzi">Prezzi</a>
+          <a class="tab" href="#prezzi">Prezzo</a>
           <a class="tab" href="#come">Come funziona</a>
           <a class="tab" href="#richiesta">Richiedi</a>
         </nav>
@@ -394,7 +398,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   <section class="block dark" id="vantaggi">
     <div class="wrap">
       <div class="sechead">
-        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Cos'è l'EXMA Card?</h2></div>
+        <div><svg class="xside" aria-hidden="true" viewBox="0 0 100 100"><use href="#xmark"/></svg><h2>Cos'è<br>l'EXMA Card?</h2></div>
         <div class="supporttext">
           <p>Il progetto EXMA.earth prevede un fitto programma artistico dedicato ai linguaggi della contemporaneità, ai percorsi di valorizzazione culturale del tessuto urbano, con performance, concerti, laboratori, spazi di incubazione, tavoli di co-progettazione e azioni di empowerment delle comunità.</p>
           <p>EXMA Card è uno strumento per contribuire a sostenere le attività culturali del Centro, aiutandoci a portare contenuti innovativi in città.</p>
@@ -460,7 +464,7 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
       <div class="visit-text">
         <h2>Richiedi la tua tessera</h2>
         <p>Compila il modulo online. Quando la tessera è pronta per il ritiro, ti mandiamo una mail.</p>
-        <p><strong>Ritiro in sede</strong> EXMA, Via San Lucifero 71, 09127 Cagliari<br>Ritiro dal lunedì al venerdì, dalle 12:00 alle 13:00.</p>
+        <p>Il ritiro sarà presso la sede EXMA, Via San Lucifero 71, 09127 Cagliari, dal lunedì al venerdì, dalle 10:00 alle 13:00 e dalle 16:00 alle 18:00.</p>
         <p>Porta un documento d'identità valido. Il ritiro va fatto entro 30 giorni dall'email che ti avvisa che la tessera è pronta: dopo questa data la richiesta scade.</p>
         <p>La tessera è intestata a te e la ritiri solo tu. Non viene spedita e non ha una versione digitale.</p>
         <a class="btn accent big" href="https://docs.google.com/forms/d/e/1FAIpQLSdraMn5HjhKi2VlTxJy54cRBdRwAPpvnm9OZcZlt_wmB5gKOg/viewform?usp=sharing&ouid=107962878130483512023" target="_blank" rel="noopener">Richiedi la tua tessera</a>
@@ -509,7 +513,7 @@ const PRIVACY_URL = "#"; // link alla privacy policy della tessera (da definire)
 const TERMINI_URL = "#"; // link ai Termini e Condizioni della tessera (da definire)
 
 const AZIENDE = [
-  { nome: "Sardegna Teatro",     gruppo: "team", url: "https://www.sardegnateatro.it/", vantaggio: "Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)" },
+  { nome: "Sardegna Teatro",     gruppo: "team", url: "https://www.sardegnateatro.it/", vantaggio: ["Su tutti gli spettacoli, cashback Sardex (30% invece del 10%)", "Sui laboratori teatrali, cashback Sardex del 20%", "Sulla quota mensile Creative Campus, 20% cashback Sardex"] },
   { nome: "Fuorimargine",        gruppo: "team", url: "https://www.fuorimargine.eu/",   vantaggio: "Su tutti gli spettacoli, biglietto ridotto" },
   { nome: "Radio X Social Club", gruppo: "team", url: "https://www.radiox.it/",         vantaggio: "Sconto al Bar del 10%" },
   { nome: "The Net Value",       gruppo: "team", url: "https://thenetvalue.com/",       vantaggio: "Primo ingresso giornaliero al coworking in omaggio, poi 20% di sconto su tutti gli ingressi giornalieri successivi" }
@@ -550,8 +554,13 @@ GRUPPI.forEach(g => {
     l.appendChild(fr);
     h.appendChild(l);
   } else h.textContent = a.nome;
-  const p = document.createElement("p"); p.textContent = a.vantaggio;
-  d.append(h, p);
+  d.append(h);
+  const vv = [].concat(a.vantaggio);
+  if (vv.length > 1) {
+    const ul = document.createElement("ul"); ul.className = "dashlist";
+    vv.forEach(v => { const li = document.createElement("li"); li.textContent = v; ul.append(li); });
+    d.append(ul);
+  } else { const p = document.createElement("p"); p.textContent = vv[0]; d.append(p); }
   elenco.appendChild(d);
   });
   lista.appendChild(sez);
