@@ -478,32 +478,6 @@ footer .partners .eyebrow { color: rgba(255,255,255,.6); margin-bottom: 14px; }
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <a class="logo" href="https://exma.earth" aria-label="EXMA"><img src="assets/exma-wordmark-white.png" alt="EXMA"></a>
-      <p style="margin-top:16px">Centro d'arte e cultura. Saperi ibridati e connessioni collettive.</p>
-    </div>
-    <div>
-      <p><strong>Progetto EXMA.earth</strong></p>
-      <p>Via San Lucifero 71, 09127 Cagliari</p>
-      <p>info@exma.earth</p>
-    </div>
-    <div>
-      <!-- TODO: URL reale prima della pubblicazione -->
-      <p><a id="privacylink2" href="#">Privacy policy EXMA Card</a></p>
-      <p><a href="https://exma.earth">exma.earth</a></p>
-      <p><a href="https://www.instagram.com/exma.earth">Instagram</a></p>
-    </div>
-  </div>
-  <div class="partners">
-    <div class="wrap">
-      <div class="eyebrow">La società consortile CLOE</div>
-      <img src="assets/partners-strip.png" alt="Teatro di Sardegna, Fuorimargine, The Net Value, Area X, Radio X" loading="lazy">
-    </div>
-  </div>
-</footer>
-
 <script>
 /* ============================================================
    CONTENUTI MODIFICABILI
@@ -573,7 +547,6 @@ burger.addEventListener("click", e => { e.stopPropagation(); toggleMenu(menu.hid
 document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) toggleMenu(false); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
 
-document.getElementById("privacylink2").href = PRIVACY_URL;
 document.getElementById("privacylink").href = PRIVACY_URL;
 document.getElementById("terminilink").href = TERMINI_URL;
 </script>
